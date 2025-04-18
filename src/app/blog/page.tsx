@@ -104,42 +104,66 @@ export default function Blog() {
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    const fetchGists = async () => {
-      try {
-        const response = await fetch('https://api.github.com/users/gbzarelli/gists');
-        if (!response.ok) {
-          throw new Error('Falha ao carregar os gists');
-        }
-        const data = await response.json();
-        
-        // Filtra e processa os gists
-        const helpdevGists = data
-          .filter((gist: Gist) => gist.description?.includes('#helpdev-blog'))
-          .map((gist: Gist) => {
-            const rawTitle = gist.description?.replace('#helpdev-blog', '').trim() || 'Sem título';
-            const firstFile = Object.values(gist.files)[0];
-            const language = firstFile?.language || 'default';
-            const fileName = firstFile?.filename.split('.')[0].replace(/-/g, ' ');
-            const description = `${fileName} - ${language}`;
-            
-            return {
-              ...gist,
-              cleanTitle: rawTitle,
-              cleanDescription: description,
-              imageUrl: getImageForTitle(rawTitle)
-            };
-          });
-
-        setGists(helpdevGists);
-        setLoading(false);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Erro ao carregar os gists');
-        setLoading(false);
+  const fetchGists = async (pageNumber: number): Promise<{ gists: Gist[], hasMore: boolean }> => {
+    try {
+      const response = await fetch(`https://api.github.com/users/gbzarelli/gists?page=${pageNumber}&per_page=30`);
+      if (!response.ok) {
+        throw new Error('Falha ao carregar os gists');
       }
-    };
 
-    fetchGists();
+      const data = await response.json();
+      
+      // Filtra e processa os gists
+      const helpdevGists = data
+        .filter((gist: Gist) => gist.description?.includes('#helpdev-blog'))
+        .map((gist: Gist) => {
+          const rawTitle = gist.description?.replace('#helpdev-blog', '').trim() || 'Sem título';
+          const firstFile = Object.values(gist.files)[0];
+          const language = firstFile?.language || 'default';
+          const fileName = firstFile?.filename.split('.')[0].replace(/-/g, ' ');
+          const description = `${fileName} - ${language}`;
+          
+          return {
+            ...gist,
+            cleanTitle: rawTitle,
+            cleanDescription: description,
+            imageUrl: getImageForTitle(rawTitle)
+          };
+        });
+
+      // Se a página retornou menos que 30 gists, é a última página
+      const hasMore = data.length === 30;
+
+      return { gists: helpdevGists, hasMore };
+    } catch (err) {
+      throw new Error(err instanceof Error ? err.message : 'Erro ao carregar os gists');
+    }
+  };
+
+  const loadAllGists = async () => {
+    try {
+      let currentPage = 1;
+      let allGists: Gist[] = [];
+      let hasMore = true;
+
+      while (hasMore) {
+        const { gists: pageGists, hasMore: hasMoreGists } = await fetchGists(currentPage);
+        
+        allGists = [...allGists, ...pageGists];
+        hasMore = hasMoreGists;
+        currentPage++;
+      }
+
+      setGists(allGists);
+      setLoading(false);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Erro ao carregar os gists');
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadAllGists();
   }, []);
 
   const filteredGists = useMemo(() => {
