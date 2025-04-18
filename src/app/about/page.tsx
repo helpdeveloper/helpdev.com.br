@@ -2,22 +2,33 @@
 
 import { Navbar } from '../components/Navbar';
 import Image from 'next/image';
+import { FaLinkedin, FaGithub, FaMedium, FaEnvelope, FaGlobe } from 'react-icons/fa';
 
 export default function About() {
   const experiences = [
     {
       role: "Staff Software Engineer",
       company: "PicPay",
+      companyUrl: "https://www.linkedin.com/company/picpay/",
       area: "Corporate Financial Services",
-      description: "Papel estratégico e técnico, liderando decisões arquiteturais e impulsionando soluções escaláveis e resilientes no setor de Acquiring, utilizando tecnologias como Spring Boot, RabbitMQ, Docker e AWS.",
+      description: "Liderança técnica e arquitetural no desenvolvimento do Core Bancário. Responsável por decisões arquiteturais e desenvolvimento de soluções escaláveis e resilientes no setor de Acquiring, utilizando tecnologias como Spring Boot, RabbitMQ, Docker e AWS.",
       icon: "💼"
     },
     {
       role: "Tech Lead",
       company: "Magazine Luiza",
+      companyUrl: "https://www.linkedin.com/company/luizalabs/",
       area: "Vertical de Logística",
-      description: "Suporte às squads na definição de arquiteturas, estabelecimento de padrões e criação de soluções. Participação em processos complexos de migração entre AWS, GCP e MagaluCloud.",
+      description: "Liderança técnica na definição de arquiteturas e padrões de desenvolvimento, facilitando a migração entre diferentes provedores de cloud (AWS, GCP e MagaluCloud). Mentoria de equipes e implementação de boas práticas de desenvolvimento.",
       icon: "👨‍💻"
+    },
+    {
+      role: "Desenvolvedor Backend/Android",
+      company: "Grupo Criar",
+      companyUrl: "https://www.linkedin.com/company/grupocriar/",
+      area: "Desenvolvimento Mobile e Backend",
+      description: "Desenvolvimento de aplicativos Android e sistemas backend para empresas públicas e privadas, incluindo sistemas de gestão de trânsito e mobilidade urbana. Implementação de soluções mobile e backend com foco em usabilidade e performance.",
+      icon: "📱"
     }
   ];
 
@@ -25,28 +36,29 @@ export default function About() {
     {
       category: "Linguagens",
       items: [
-        { name: "Java", level: "Principal", icon: "☕" },
-        { name: "Kotlin", level: "Android", icon: "📱" },
-        { name: "Python", level: "Scripts", icon: "🐍" },
-        { name: "GO", level: "Conhecimento", icon: "🔵" }
+        { name: "Java", level: "Especialista", icon: "☕" },
+        { name: "Kotlin", level: "Desenvolvimento Android", icon: "📱" },
+        { name: "Python", level: "Automação e Scripts", icon: "🐍" },
+        { name: "GO", level: "Desenvolvimento Backend", icon: "🔵" }
       ]
     },
     {
       category: "Tecnologias",
       items: [
-        { name: "Spring Boot", level: "Avançado", icon: "🌱" },
-        { name: "Docker", level: "Avançado", icon: "🐳" },
-        { name: "AWS", level: "Avançado", icon: "☁️" },
-        { name: "Kubernetes", level: "Avançado", icon: "⚙️" }
+        { name: "Spring Boot", level: "Arquitetura e Microserviços", icon: "🌱" },
+        { name: "Docker", level: "Containerização e Orquestração", icon: "🐳" },
+        { name: "AWS", level: "Cloud e Infraestrutura", icon: "☁️" },
+        { name: "Kubernetes", level: "Orquestração de Containers", icon: "⚙️" }
       ]
     }
   ];
 
   const contacts = [
-    { name: "Website", url: "https://helpdev.com.br", icon: "🌐" },
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/gbzarelli/", icon: "💼" },
-    { name: "Twitter", url: "https://twitter.com/gbzarelli", icon: "🐦" },
-    { name: "Email", url: "mailto:gbzarelli@helpdev.com.br", icon: "📧" }
+    { name: "Website", url: "https://helpdev.com.br", icon: <FaGlobe className="text-2xl" /> },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/gbzarelli/", icon: <FaLinkedin className="text-2xl" /> },
+    { name: "GitHub", url: "https://github.com/gbzarelli", icon: <FaGithub className="text-2xl" /> },
+    { name: "Medium", url: "https://medium.com/@guilherme.zarelli", icon: <FaMedium className="text-2xl" /> },
+    { name: "Email", url: "mailto:gbzarelli@helpdev.com.br", icon: <FaEnvelope className="text-2xl" /> }
   ];
 
   return (
@@ -79,16 +91,16 @@ export default function About() {
                       className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
                       title={contact.name}
                     >
-                      <span className="text-2xl">{contact.icon}</span>
+                      {contact.icon}
                     </a>
                   ))}
                 </div>
               </div>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Profissional com mais de uma década de experiência em desenvolvimento de software 
-                e liderança técnica, especializado em projetos estratégicos para empresas de grande 
-                porte no setor de tecnologia. Comprometido com o compartilhamento de conhecimento 
-                através de apresentações e disseminação de melhores práticas.
+                Engenheiro de Software com mais de 10 anos de experiência em desenvolvimento e arquitetura de sistemas. 
+                Especialista em soluções escaláveis para empresas de grande porte, com foco em arquitetura de software, 
+                cloud computing e desenvolvimento de aplicações mobile. Comprometido com o compartilhamento de conhecimento 
+                através de artigos técnicos, palestras e mentoria de desenvolvedores.
               </p>
             </div>
           </div>
@@ -105,7 +117,14 @@ export default function About() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">{exp.role}</h3>
-                  <p className="text-blue-600 font-medium">{exp.company}</p>
+                  <a 
+                    href={exp.companyUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-medium hover:text-blue-800 transition-colors"
+                  >
+                    {exp.company}
+                  </a>
                   <p className="text-gray-500 mb-2">{exp.area}</p>
                   <p className="text-gray-600">{exp.description}</p>
                 </div>
