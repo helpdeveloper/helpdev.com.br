@@ -2,7 +2,7 @@
 
 import { Navbar } from '../components/Navbar';
 import Image from 'next/image';
-import { FaLinkedin, FaGithub, FaMedium, FaEnvelope, FaGlobe } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaMedium, FaEnvelope, FaInstagram } from 'react-icons/fa';
 
 export default function About() {
   const experiences = [
@@ -54,10 +54,9 @@ export default function About() {
   ];
 
   const contacts = [
-    { name: "Website", url: "https://helpdev.com.br", icon: <FaGlobe className="text-2xl" /> },
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/gbzarelli/", icon: <FaLinkedin className="text-2xl" /> },
     { name: "GitHub", url: "https://github.com/gbzarelli", icon: <FaGithub className="text-2xl" /> },
     { name: "Medium", url: "https://medium.com/@guilherme.zarelli", icon: <FaMedium className="text-2xl" /> },
+    { name: "Instagram", url: "https://www.instagram.com/_helpdev/", icon: <FaInstagram className="text-2xl" /> },
     { name: "Email", url: "mailto:gbzarelli@helpdev.com.br", icon: <FaEnvelope className="text-2xl" /> }
   ];
 
@@ -96,12 +95,23 @@ export default function About() {
                   ))}
                 </div>
               </div>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="mt-4 text-gray-600">
                 Engenheiro de Software com mais de 10 anos de experiência em desenvolvimento e arquitetura de sistemas. 
                 Especialista em soluções escaláveis para empresas de grande porte, com foco em arquitetura de software, 
                 cloud computing e desenvolvimento de aplicações mobile. Comprometido com o compartilhamento de conhecimento 
                 através de artigos técnicos, palestras e mentoria de desenvolvedores.
               </p>
+              <div className="mt-4">
+                <a
+                  href="https://www.linkedin.com/in/gbzarelli/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  <FaLinkedin className="mr-2" />
+                  Ver perfil completo no LinkedIn
+                </a>
+              </div>
             </div>
           </div>
         </div>

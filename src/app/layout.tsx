@@ -5,12 +5,24 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "HelpDev - Compartilhando Conhecimento em Desenvolvimento de Software",
+  title: {
+    default: "HelpDev - Compartilhando Conhecimento em Desenvolvimento de Software",
+    template: "%s | HelpDev"
+  },
   description: "Portal dedicado a compartilhar conhecimento sobre desenvolvimento de software, com artigos técnicos, projetos open source e snippets de código úteis.",
-  keywords: "desenvolvimento de software, programação, artigos técnicos, projetos open source, snippets de código, tecnologia",
+  keywords: ["desenvolvimento de software", "programação", "artigos técnicos", "projetos open source", "snippets de código", "tecnologia", "java", "arquitetura de software", "clean code", "boas práticas"],
   authors: [{ name: "Guilherme Biff Zarelli" }],
   creator: "Guilherme Biff Zarelli",
   publisher: "HelpDev",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://helpdev.com.br'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -33,6 +45,7 @@ export const metadata: Metadata = {
     description: "Portal dedicado a compartilhar conhecimento sobre desenvolvimento de software, com artigos técnicos, projetos open source e snippets de código úteis.",
     images: ["https://helpdev.com.br/images/logo.png"],
     creator: "@gbzarelli",
+    site: "@_helpdev",
   },
   robots: {
     index: true,
@@ -45,6 +58,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
