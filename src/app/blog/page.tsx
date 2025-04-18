@@ -143,18 +143,18 @@ export default function Blog() {
   const loadAllGists = async () => {
     try {
       let currentPage = 1;
-      let allGists: Gist[] = [];
       let hasMore = true;
-
+  
       while (hasMore) {
         const { gists: pageGists, hasMore: hasMoreGists } = await fetchGists(currentPage);
-        
-        allGists = [...allGists, ...pageGists];
+  
+        // Atualiza os gists incrementalmente
+        setGists(prev => [...prev, ...pageGists]);
+  
         hasMore = hasMoreGists;
         currentPage++;
       }
-
-      setGists(allGists);
+  
       setLoading(false);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro ao carregar os gists');
