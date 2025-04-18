@@ -131,10 +131,21 @@ export default function About() {
               </div>
             ))}
           </div>
+          <div className="mt-6 text-center">
+            <a
+              href="https://www.linkedin.com/in/gbzarelli/details/recommendations/?detailScreenTabIndex=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              <FaLinkedin className="mr-2" />
+              Ver recomendações no LinkedIn
+            </a>
+          </div>
         </div>
 
         {/* Skills Section */}
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Competências Técnicas</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {skills.map((skillGroup) => (
@@ -153,6 +164,17 @@ export default function About() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-6 text-center">
+            <a
+              href="https://www.linkedin.com/in/gbzarelli/details/certifications/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              <FaLinkedin className="mr-2" />
+              Ver certificações no LinkedIn
+            </a>
           </div>
         </div>
       </main>
