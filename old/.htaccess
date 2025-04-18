@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Redirecionar /blog para /blog.html
+RewriteRule ^blog/?$ /blog.html [L,R=301]
+
+# Redirecionar todas as URLs não encontradas para a home
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ / [L,R=301]
