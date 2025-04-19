@@ -21,7 +21,18 @@ interface Gist {
   cleanTitle: string;
   cleanDescription: string;
   imageUrl: string;
+  tags: string[];
 }
+
+const technologyKeywords = [
+  'aws', 'sns', 'sqs', 's3', 'lambda', 'architecture', 'arquitetura', 'clean', 'design', 'adr',
+  'java', 'spring', 'jvm', 'performance', 'rabbitmq', 'kafka', 'message', 'mensageria',
+  'go', 'golang', 'cloud', 'docker', 'kubernetes', 'test', 'teste', 'quality', 'qualidade',
+  'code', 'código', 'desenvolvimento', 'api', 'rest', 'graphql', 'security', 'segurança',
+  'typescript', 'javascript', 'python', 'php', 'ruby', 'csharp', 'c++', 'c', 'dart', 'rust', 'scala', 'elixir',
+  'backstage', 'mysql', 'mongodb', 'mongo', 'postgres', 'postgresql', 'android', 'sql'
+];
+
 
 // Mapeamento de palavras-chave para imagens temáticas
 const getImageForTitle = (title: string): string => {
@@ -98,6 +109,12 @@ const getImageForTitle = (title: string): string => {
   return imageMap.default;
 };
 
+const extractTagsFromText = (text: string): string[] => {
+  const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+  const wordSet = new Set(words);
+  return technologyKeywords.filter(keyword => wordSet.has(keyword));
+};
+
 export default function Blog() {
   const [gists, setGists] = useState<Gist[]>([]);
   const [loading, setLoading] = useState(true);
@@ -122,12 +139,14 @@ export default function Blog() {
           const language = firstFile?.language || 'default';
           const fileName = firstFile?.filename.split('.')[0].replace(/-/g, ' ');
           const description = `${fileName} - ${language}`;
+          const tags = extractTagsFromText(gist.description);
           
           return {
             ...gist,
             cleanTitle: rawTitle,
             cleanDescription: description,
-            imageUrl: getImageForTitle(rawTitle)
+            imageUrl: getImageForTitle(rawTitle),
+            tags: tags
           };
         });
 
@@ -243,6 +262,7 @@ export default function Blog() {
                 date={new Date(gist.created_at).toLocaleDateString('pt-BR')}
                 link={gist.html_url}
                 imageUrl={gist.imageUrl}
+                tags={gist.tags}
               />
             ))}
           </div>
