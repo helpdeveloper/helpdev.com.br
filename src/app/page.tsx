@@ -17,10 +17,10 @@ const featuredArticles = [
     link: "https://medium.com/inside-picpay/otimiza%C3%A7%C3%A3o-da-jvm-para-cont%C3%AAineres-mem%C3%B3ria-e-garbage-collection-c9b640fa4219"
   },
   {
-    title: "Decisões Arquiteturais: Registro e Sustentabilidade na Evolução de Sistemas",
-    description: "Como documentar e manter decisões arquiteturais para garantir a evolução sustentável de sistemas de software.",
-    imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*bAvz6hNEd6LRvoeiGp_esQ.jpeg",
-    link: "https://medium.com/inside-picpay/decis%C3%B5es-arquiteturais-registro-e-sustentabilidade-na-evolu%C3%A7%C3%A3o-de-sistemas-72eca5e32be1"
+    title: "Descomplicando a Clean Architecture",
+    description: "Uma abordagem simplificada e prática para implementar Clean Architecture em seus projetos.",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/0*J8pxLe88qYFN7wUf.png",
+    link: "https://medium.com/luizalabs/descomplicando-a-clean-architecture-cf4dfc4a1ac6"
   },
   {
     title: "O Use Case: Modelando as Interações do Seu Domínio",
