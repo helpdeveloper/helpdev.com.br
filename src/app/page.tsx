@@ -46,11 +46,11 @@ const featuredProjects = [
     languages: ["Java", "Spring Boot", "Docker"]
   },
   {
-    title: "Finite State Machine - DevPira 2020",
-    description: "Implementação de máquinas de estado finito (FSM) em Java e Python, apresentada no evento DevPira 2020. Inclui exemplos práticos como um sistema de delivery e um jogo de captura de Pokémon.",
-    imageUrl: "https://github.com/gbzarelli/fsm-devpira-2020/raw/main/images/logo-event.png",
-    link: "https://github.com/gbzarelli/fsm-devpira-2020",
-    languages: ["Java", "Python"]
+    title: "GZIP JSON Jackson",
+    description: "Biblioteca para compressão e descompressão eficiente de JSON usando GZIP e Jackson, otimizando a transferência de dados.",
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5",
+    link: "https://github.com/helpdeveloper/gzip-json-jackson",
+    languages: ["Java"]
   }
 ];
 
