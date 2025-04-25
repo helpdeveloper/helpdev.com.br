@@ -3,7 +3,7 @@
 import { BlogCard } from '../components/BlogCard';
 import { Navbar } from '../components/Navbar';
 import { SearchBar } from '../components/SearchBar';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 
 interface Gist {
   id: string;
@@ -159,7 +159,7 @@ export default function Blog() {
     }
   };
 
-  const loadAllGists = async () => {
+  const loadAllGists = useCallback(async () => {
     try {
       let currentPage = 1;
       let hasMore = true;
@@ -179,11 +179,11 @@ export default function Blog() {
       setError(err instanceof Error ? err.message : 'Erro ao carregar os gists');
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     loadAllGists();
-  }, []);
+  }, [loadAllGists]);
 
   const filteredGists = useMemo(() => {
     if (!searchTerm) return gists;
