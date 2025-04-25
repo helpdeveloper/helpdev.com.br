@@ -6,7 +6,7 @@ import { Navbar } from './components/Navbar';
 import { ArticleCard } from './components/ArticleCard';
 import { BlogCard } from './components/BlogCard';
 import { ProjectCard } from './components/ProjectCard';
-import { FaLinkedin, FaGithub, FaMedium, FaEnvelope, FaInstagram, FaArrowRight } from 'react-icons/fa';
+import { FaGithub, FaMedium, FaEnvelope, FaInstagram, FaArrowRight } from 'react-icons/fa';
 
 // Featured content data
 const featuredArticles = [
@@ -32,44 +32,52 @@ const featuredArticles = [
 
 const featuredProjects = [
   {
-    title: "Clean Architecture Demo",
-    description: "Projeto demonstrativo de uma arquitetura limpa e modular para aplicações Java/Spring Boot.",
-    imageUrl: "https://raw.githubusercontent.com/gbzarelli/clean-architecture-delivery-app-sample/main/images/diagram.png",
-    link: "https://github.com/gbzarelli/clean-architecture-delivery-app-sample",
+    title: "Java Modular Architecture",
+    description: "Uma arquitetura modular em Java que demonstra boas práticas de desenvolvimento e padrões de projeto, incluindo exemplos práticos de implementação.",
+    imageUrl: "https://github.com/helpdeveloper/java-modular-architecture/raw/main/images/arch.png",
+    link: "https://github.com/helpdeveloper/java-modular-architecture",
+    languages: ["Java", "Spring Boot"]
+  },
+  {
+    title: "Java Architecture Template",
+    description: "Template para arquitetura Java seguindo as melhores práticas e padrões modernos de desenvolvimento de software.",
+    imageUrl: "https://github.com/helpdeveloper/java-architecture-template/raw/main/.images/banner.webp",
+    link: "https://github.com/helpdeveloper/java-architecture-template",
     languages: ["Java", "Spring Boot", "Docker"]
   },
   {
-    title: "Android UX Playground",
-    description: "Exemplos e demonstrações de padrões modernos de UI/UX para desenvolvimento Android.",
-    imageUrl: "https://raw.githubusercontent.com/gbzarelli/android-simple-download-manager/main/screenshots/main_screen.png",
-    link: "https://github.com/gbzarelli/android-simple-download-manager",
-    languages: ["Kotlin", "Android", "Material Design"]
-  },
-  {
-    title: "Microservices Toolkit",
-    description: "Conjunto de ferramentas para desenvolvimento e monitoramento de arquiteturas de microserviços.",
-    imageUrl: "https://via.placeholder.com/800x450?text=Microservices+Toolkit",
-    link: "https://github.com/gbzarelli/microservices-toolkit",
-    languages: ["Java", "Spring Cloud", "Docker", "Kubernetes"]
+    title: "Finite State Machine - DevPira 2020",
+    description: "Implementação de máquinas de estado finito (FSM) em Java e Python, apresentada no evento DevPira 2020. Inclui exemplos práticos como um sistema de delivery e um jogo de captura de Pokémon.",
+    imageUrl: "https://github.com/gbzarelli/fsm-devpira-2020/raw/main/images/logo-event.png",
+    link: "https://github.com/gbzarelli/fsm-devpira-2020",
+    languages: ["Java", "Python"]
   }
 ];
 
 const featuredBlogPosts = [
   {
-    title: "Como estruturar projetos Java para máxima produtividade",
-    description: "Dicas práticas para organizar seu código e aumentar a eficiência do desenvolvimento em equipe.",
-    date: "22 Mar 2025",
-    link: "https://medium.com/@guilherme.zarelli/estruturando-projetos-java-123abc",
-    imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ANetWgPAOkjvBM05WxT4nw.png",
-    tags: ["java", "architecture", "clean"]
+    title: "Entendendo a Escala Horizontal em Bancos NoSQL",
+    description: "Uma análise detalhada sobre a escalabilidade horizontal em bancos de dados NoSQL, incluindo conceitos e práticas.",
+    date: "21 Apr 2025",
+    link: "https://gist.github.com/gbzarelli/c43b7657bb63d917f3c33254cd6e8d8b",
+    imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&auto=format&fit=crop&q=60",
+    tags: ["database", "nosql", "architecture"]
   },
   {
-    title: "Técnicas avançadas de debugging para desenvolvedores Java",
-    description: "Métodos e ferramentas que vão além do básico para resolver problemas complexos de performance.",
-    date: "10 Fev 2025",
-    link: "https://medium.com/@guilherme.zarelli/debugging-avancado-java-456def",
-    imageUrl: "https://miro.medium.com/v2/resize:fit:786/format:webp/0*5YPydAOHKnwAyAA9.png",
-    tags: ["java", "performance", "debugging"]
+    title: "Comparação dos Principais Garbage Collectors da JVM",
+    description: "Uma análise comparativa dos diferentes garbage collectors disponíveis na JVM, ajudando a escolher o mais adequado para cada caso.",
+    date: "04 Feb 2025",
+    link: "https://gist.github.com/gbzarelli/7996424d114392551205722363925a97",
+    imageUrl: "https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=800&auto=format&fit=crop&q=60",
+    tags: ["java", "jvm", "performance"]
+  },
+  {
+    title: "Configurações de containers para aplicações JVM",
+    description: "Guia prático sobre configurações de recursos e optimizações para containers que executam aplicações Java em ambientes containerizados.",
+    date: "12 Jan 2025",
+    link: "https://gist.github.com/gbzarelli/ada40a628da0aba1fd2fe2d864aac792",
+    imageUrl: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&auto=format&fit=crop&q=60",
+    tags: ["java", "containers", "kubernetes"]
   }
 ];
 
