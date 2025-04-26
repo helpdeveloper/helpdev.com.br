@@ -1,0 +1,42 @@
+name: Build and Deploy Static Export
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: ['*']
+  pull_request_target:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Update this to match your project's Node version
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build static export
+        run: npm run build  # This will run next build which generates the 'out' directory
+      
+      - name: Deploy to FTP
+        if: github.event_name == 'pull_request_target' && github.event.pull_request.merged == true
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          # Update this to your target directory on the FTP server
+          server-dir: /  # Change this to your desired directory path on the server
+
