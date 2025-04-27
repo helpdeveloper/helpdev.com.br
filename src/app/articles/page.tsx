@@ -7,6 +7,18 @@ import { useState, useMemo } from 'react';
 
 const articles = [
   {
+    title: "Replica Sets, Sharding e Escalabilidade Horizontal em Bancos NoSQL",
+    description: "Neste artigo, vamos explorar como bancos NoSQL aplicam conceitos como Replica Sets e Sharding para enfrentar esses desafios de escala e resiliência.",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*w_Yh7gGE_Rs8AgstoWNTnw.png",
+    link: "https://medium.com/@guilherme.zarelli/replica-sets-sharding-e-escalabilidade-horizontal-em-bancos-nosql-ffaf3f74caf4"
+  },
+  {
+    title: "A IA Está Mudando o Jeito de Desenvolver Software — Estamos Perdendo Qualidade Técnica?",
+    description: "Mas com todo esse avanço, surge uma dúvida que ecoa entre desenvolvedores experientes: estamos perdendo qualidade técnica com essa evolução?",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ybs9xlhA1uTHsMYiggEpiQ.png",
+    link: "https://medium.com/@guilherme.zarelli/a-ia-est%C3%A1-mudando-o-jeito-de-desenvolver-software-estamos-perdendo-qualidade-t%C3%A9cnica-f3a1f43f8da7"
+  },
+  {
     title: "Otimização da JVM para Contêineres: Memória e Garbage Collection",
     description: "Entenda como otimizar as configurações da JVM para ambientes containerizados, focando em gerenciamento de memória e garbage collection.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*GWIPBD-OhfJ5ZjkkwB7Uqw.jpeg",

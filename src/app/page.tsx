@@ -56,12 +56,12 @@ const featuredProjects = [
 
 const featuredBlogPosts = [
   {
-    title: "Entendendo a Escala Horizontal em Bancos NoSQL",
-    description: "Uma análise detalhada sobre a escalabilidade horizontal em bancos de dados NoSQL, incluindo conceitos e práticas.",
+    title: "Encaminhamento de Requisições HTTP entre Serviços com AWS ALB Ingress",
+    description: "Redirecionamento de Métodos HTTP entre Serviços",
     date: "21 Apr 2025",
-    link: "https://gist.github.com/gbzarelli/c43b7657bb63d917f3c33254cd6e8d8b",
+    link: "https://gist.github.com/gbzarelli/48f7ef6c0f8a7833659ce78754c19764",
     imageUrl: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&auto=format&fit=crop&q=60",
-    tags: ["database", "nosql", "architecture"]
+    tags: ["k8s", "ingress", "aws"]
   },
   {
     title: "Comparação dos Principais Garbage Collectors da JVM",
