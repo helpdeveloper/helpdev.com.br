@@ -34,13 +34,13 @@ const articles = [
     title: "O Use Case: Modelando as Interações do Seu Domínio",
     description: "Uma abordagem prática sobre como modelar casos de uso e interações em seu domínio de negócio.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*_dwylzkbc7FphRGIFOfufQ.png",
-    link: "https://medium.com/inside-picpay/o-use-case-modelando-as-intera%C3%A7%C3%B5es-do-seu-dom%C3%ADnio-7b9f4f1e3b6a"
+    link: "https://medium.com/inside-picpay/o-use-case-modelando-as-intera%C3%A7%C3%B5es-do-seu-dom%C3%ADnio-c6c568270d0c"
   },
   {
     title: "O Core Domain: Modelando Domínios Ricos",
     description: "Aprenda a identificar e modelar o núcleo do seu domínio de negócio usando técnicas de Domain-Driven Design.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*Onxb6GIsCSK-gNpruwMSWA.png",
-    link: "https://medium.com/inside-picpay/o-core-domain-modelando-dom%C3%ADnios-ricos-4c9f4f1e3b6a"
+    link: "https://medium.com/inside-picpay/o-core-domain-modelando-dom%C3%ADnios-ricos-f1fe664c998f"
   },
   {
     title: "Observabilidade: Monitorando sua aplicação a partir de métricas",
@@ -52,25 +52,25 @@ const articles = [
     title: "Garantindo a arquitetura de uma aplicação sem complexidade",
     description: "Estratégias para manter uma arquitetura limpa e eficiente em suas aplicações.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:640/format:webp/0*Qef5mohUR8jvRmCC.gif",
-    link: "https://medium.com/luizalabs/garantindo-a-arquitetura-de-uma-aplica%C3%A7%C3%A3o-sem-complexidade-abcdef123456"
+    link: "https://medium.com/luizalabs/garantindo-a-arquitetura-de-uma-aplica%C3%A7%C3%A3o-sem-complexidade-6f675653799c"
   },
   {
     title: "Java Garbage Collector — Por que precisamos conhecê-lo?",
     description: "Um mergulho profundo no funcionamento do Garbage Collector do Java e sua importância.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ANetWgPAOkjvBM05WxT4nw.png",
-    link: "https://medium.com/luizalabs/java-garbage-collector-por-que-precisamos-conhec%C3%AA-lo-abcdef123456"
+    link: "https://medium.com/luizalabs/java-garbage-collector-porque-precisamos-conhec%C3%AA-lo-9d26ebb0a6d8"
   },
   {
     title: "Separando os testes integrados de sua aplicação em um novo conceito",
     description: "Uma nova abordagem para organizar e executar testes de integração em suas aplicações.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:786/format:webp/0*5YPydAOHKnwAyAA9.png",
-    link: "https://medium.com/luizalabs/separando-os-testes-integrados-de-sua-aplica%C3%A7%C3%A3o-em-um-novo-conceito-abcdef123456"
+    link: "https://medium.com/luizalabs/separando-os-testes-integrados-de-sua-aplica%C3%A7%C3%A3o-em-um-novo-conceito-4f511ebb53a4"
   },
   {
     title: "Refatoração, a maneira mais eficiente de manter seu código limpo",
     description: "Técnicas e práticas de refatoração para manter a qualidade e legibilidade do código.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:640/format:webp/0*a1C3jS9-3mrmHXIB.jpeg",
-    link: "https://medium.com/luizalabs/refatora%C3%A7%C3%A3o-a-maneira-mais-eficiente-de-manter-seu-c%C3%B3digo-limpo-abcdef123456"
+    link: "https://medium.com/luizalabs/refatora%C3%A7%C3%A3o-a-maneira-mais-eficiente-de-manter-seu-c%C3%B3digo-limpo-3f6439da90db"
   },
   {
     title: "Criando uma aplicação modular muito além do Clean Architecture",

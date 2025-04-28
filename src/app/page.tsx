@@ -26,7 +26,7 @@ const featuredArticles = [
     title: "O Use Case: Modelando as Interações do Seu Domínio",
     description: "Uma abordagem prática sobre como modelar casos de uso e interações em seu domínio de negócio.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*_dwylzkbc7FphRGIFOfufQ.png",
-    link: "https://medium.com/inside-picpay/o-use-case-modelando-as-intera%C3%A7%C3%B5es-do-seu-dom%C3%ADnio-7b9f4f1e3b6a"
+    link: "https://medium.com/inside-picpay/o-use-case-modelando-as-intera%C3%A7%C3%B5es-do-seu-dom%C3%ADnio-c6c568270d0c"
   }
 ];
 
