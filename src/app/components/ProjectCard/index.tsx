@@ -1,38 +1,19 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getLanguageColor } from '@/utils/publishers';
 
 interface ProjectCardProps {
   title: string;
   description: string;
   imageUrl: string;
   link: string;
-  languages: string[];
+  languages: readonly string[];
 }
 
-export const ProjectCard = ({ title, description, imageUrl, link, languages }: ProjectCardProps) => {
-  const getLanguageColor = (language: string) => {
-    const colors: { [key: string]: string } = {
-      'Java': 'bg-red-100 text-red-800',
-      'Python': 'bg-blue-100 text-blue-800',
-      'C++': 'bg-purple-100 text-purple-800',
-      'JavaScript': 'bg-yellow-100 text-yellow-800',
-      'TypeScript': 'bg-blue-100 text-blue-800',
-      'Kotlin': 'bg-purple-100 text-purple-800',
-      'C': 'bg-gray-100 text-gray-800',
-      'HTML': 'bg-orange-100 text-orange-800',
-      'CSS': 'bg-pink-100 text-pink-800',
-      'Shell': 'bg-green-100 text-green-800',
-      'Ruby': 'bg-red-100 text-red-800',
-      'Swift': 'bg-orange-100 text-orange-800',
-      'Go': 'bg-cyan-100 text-cyan-800',
-      'Rust': 'bg-orange-100 text-orange-800',
-      'Arduino': 'bg-teal-100 text-teal-800',
-      'Android': 'bg-green-100 text-green-800'
-    };
-    return colors[language] || 'bg-gray-100 text-gray-800';
-  };
+export const ProjectCard = React.memo(({ title, description, imageUrl, link, languages }: ProjectCardProps) => {
 
   return (
     <Link href={link} target="_blank" rel="noopener noreferrer">
@@ -70,4 +51,6 @@ export const ProjectCard = ({ title, description, imageUrl, link, languages }: P
       </div>
     </Link>
   );
-}; 
+});
+
+ProjectCard.displayName = 'ProjectCard';

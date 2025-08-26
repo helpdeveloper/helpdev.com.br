@@ -1,6 +1,8 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
+import { getTagColor } from '@/utils/publishers';
 
 interface BlogCardProps {
   title: string;
@@ -8,42 +10,10 @@ interface BlogCardProps {
   date: string;
   link: string;
   imageUrl: string;
-  tags: string[];
+  tags: readonly string[];
 }
 
-export const BlogCard = ({ title, description, date, link, imageUrl, tags }: BlogCardProps) => {
-
-  const getTagColor = (tag: string) => {
-    const colors: { [key: string]: string } = {
-      'java': 'bg-red-100 text-red-800',
-      'python': 'bg-blue-100 text-blue-800',
-      'c++': 'bg-purple-100 text-purple-800',
-      'javascript': 'bg-yellow-100 text-yellow-800',
-      'typescript': 'bg-blue-100 text-blue-800',
-      'kotlin': 'bg-purple-100 text-purple-800',
-      'c': 'bg-gray-100 text-gray-800',
-      'html': 'bg-orange-100 text-orange-800',
-      'css': 'bg-pink-100 text-pink-800',
-      'shell': 'bg-green-100 text-green-800',
-      'ruby': 'bg-red-100 text-red-800',
-      'swift': 'bg-orange-100 text-orange-800',
-      'go': 'bg-cyan-100 text-cyan-800',
-      'rust': 'bg-orange-100 text-orange-800',
-      'arduino': 'bg-teal-100 text-teal-800',
-      'android': 'bg-green-100 text-green-800',
-      'aws': 'bg-blue-100 text-blue-800',
-      'sns': 'bg-green-100 text-green-800',
-      'sqs': 'bg-yellow-100 text-yellow-800',
-      's3': 'bg-orange-100 text-orange-800',
-      'lambda': 'bg-purple-100 text-purple-800',
-      'architecture': 'bg-gray-100 text-gray-800',
-      'clean': 'bg-teal-100 text-teal-800',
-      'design': 'bg-pink-100 text-pink-800',
-      'adr': 'bg-red-100 text-red-800'      
-    };
-
-    return colors[tag] || 'bg-gray-100 text-gray-800';
-  }
+export const BlogCard = React.memo(({ title, description, date, link, imageUrl, tags }: BlogCardProps) => {
   
   return (
     <div className="bg-white rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 transform hover:-translate-y-1">
@@ -100,4 +70,6 @@ export const BlogCard = ({ title, description, date, link, imageUrl, tags }: Blo
       </a>
     </div>
   );
-}; 
+});
+
+BlogCard.displayName = 'BlogCard';
