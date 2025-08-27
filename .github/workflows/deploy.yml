@@ -1,0 +1,40 @@
+name: Build and Deploy Static Export
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on any tag starting with 'v' (e.g., v1.0.0, v1.2.3)
+  pull_request:
+    branches: [main]  # Build PRs for testing, but don't deploy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Updated to match project's Node version requirements
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build static export
+        run: npm run build  # This will run next build which generates the 'out' directory
+      
+      - name: Deploy to FTP
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          # Update this to your target directory on the FTP server
+          server-dir: /www  # Change this to your desired directory path on the server
+
