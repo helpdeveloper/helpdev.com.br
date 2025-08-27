@@ -66,7 +66,13 @@ yarn build
 
 2. Os arquivos estáticos serão gerados na pasta `out/`
 
-3. Para fazer o deploy:
+3. Para testar o build localmente:
+```bash
+npx http-server ./out -p 8000
+```
+   - Acesse em: http://localhost:8000
+
+4. Para fazer o deploy:
    - Copie todo o conteúdo da pasta `out/` para o diretório raiz do seu servidor web
    - Certifique-se de que o arquivo `.htaccess` está configurado corretamente
    - Configure o SSL/HTTPS no servidor
