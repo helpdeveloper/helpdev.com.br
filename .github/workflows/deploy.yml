@@ -35,22 +35,6 @@ jobs:
           echo "Build output files:"
           find out/ -type f | head -10
       
-      - name: Test - Check deployment configuration (PR only)
-        if: github.event_name == 'pull_request'
-        run: |
-          echo "🧪 Testing deployment configuration..."
-          echo "Event: ${{ github.event_name }}"
-          echo "Ref: ${{ github.ref }}"
-          echo "Would deploy on tag creation: ${{ startsWith(github.ref, 'refs/tags/v') }}"
-          echo "FTP_HOST is set: ${{ secrets.FTP_HOST != '' }}"
-          echo "FTP_USERNAME is set: ${{ secrets.FTP_USERNAME != '' }}"
-          echo "FTP_PASSWORD is set: ${{ secrets.FTP_PASSWORD != '' }}"
-          echo "Local directory exists: $([ -d './out/' ] && echo 'Yes' || echo 'No')"
-          if [ -d './out/' ]; then
-            echo "Files to deploy: $(find ./out/ -type f | wc -l)"
-            echo "Directory size: $(du -sh ./out/)"
-          fi
-      
       - name: Deploy to FTP (Production)
         if: github.event_name == 'pull_request'
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -59,7 +43,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          server-dir: www/new/
+          server-dir: ./new/
           exclude: |
             **/.git*
             **/.git*/**
