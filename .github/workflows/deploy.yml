@@ -10,7 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    environment: deploy
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,7 +28,14 @@ jobs:
       - name: Build static export
         run: npm run build  # This will run next build which generates the 'out' directory
       
-      - name: Deploy to FTP
+      - name: Verify build output
+        run: |
+          echo "Checking if build succeeded..."
+          ls -la out/
+          echo "Build output files:"
+          find out/ -type f | head -10
+      
+      - name: Deploy to FTP (Production)
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -35,6 +43,11 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          # Update this to your target directory on the FTP server
-          server-dir: /www  # Change this to your desired directory path on the server
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
+          dry-run: false
 
