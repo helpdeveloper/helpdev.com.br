@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          server-dir: /www/new/
+          server-dir: www/new/
           exclude: |
             **/.git*
             **/.git*/**
