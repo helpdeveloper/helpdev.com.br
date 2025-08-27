@@ -1,17 +1,25 @@
 'use client';
 
+import React, { useState, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 
-export const Navbar = () => {
+export const Navbar = React.memo(() => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const isActive = (path: string) => {
+  const isActive = useCallback((path: string) => {
     return pathname === path;
-  };
+  }, [pathname]);
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
 
   return (
     <nav className="bg-white shadow-lg">
@@ -76,7 +84,7 @@ export const Navbar = () => {
           {/* Mobile menu button */}
           <div className="flex items-center sm:hidden">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
             >
               <span className="sr-only">Abrir menu principal</span>
@@ -125,7 +133,7 @@ export const Navbar = () => {
                 ? 'border-blue-500 text-blue-700 bg-blue-50'
                 : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
             }`}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
           >
             Artigos
           </Link>
@@ -136,7 +144,7 @@ export const Navbar = () => {
                 ? 'border-blue-500 text-blue-700 bg-blue-50'
                 : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
             }`}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
           >
             Projetos
           </Link>
@@ -147,7 +155,7 @@ export const Navbar = () => {
                 ? 'border-blue-500 text-blue-700 bg-blue-50'
                 : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
             }`}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
           >
             Blog/Gists
           </Link>
@@ -158,7 +166,7 @@ export const Navbar = () => {
                 ? 'border-blue-500 text-blue-700 bg-blue-50'
                 : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
             }`}
-            onClick={() => setIsMenuOpen(false)}
+            onClick={closeMenu}
           >
             Sobre
           </Link>
@@ -166,4 +174,6 @@ export const Navbar = () => {
       </div>
     </nav>
   );
-}; 
+});
+
+Navbar.displayName = 'Navbar';

@@ -1,7 +1,9 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPublisher } from '@/utils/publishers';
 
 interface ArticleCardProps {
   title: string;
@@ -10,16 +12,7 @@ interface ArticleCardProps {
   link: string;
 }
 
-export const ArticleCard = ({ title, description, imageUrl, link }: ArticleCardProps) => {
-  const getPublisher = (url: string) => {
-    if (url.includes('luizalabs')) {
-      return { name: 'Luiza Labs', color: 'bg-blue-100 text-blue-600' };
-    } else if (url.includes('picpay')) {
-      return { name: 'PicPay', color: 'bg-green-100 text-green-600' };
-    }
-    return { name: 'Medium', color: 'bg-gray-100 text-gray-600' };
-  };
-
+export const ArticleCard = React.memo(({ title, description, imageUrl, link }: ArticleCardProps) => {
   const publisherInfo = getPublisher(link);
 
   return (
@@ -53,4 +46,6 @@ export const ArticleCard = ({ title, description, imageUrl, link }: ArticleCardP
       </div>
     </Link>
   );
-}; 
+});
+
+ArticleCard.displayName = 'ArticleCard';
