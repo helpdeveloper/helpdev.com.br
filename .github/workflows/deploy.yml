@@ -10,7 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    environment: deploy
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,7 +36,6 @@ jobs:
           find out/ -type f | head -10
       
       - name: Test - Check deployment configuration (PR only)
-        environment: deploy
         if: github.event_name == 'pull_request'
         run: |
           echo "🧪 Testing deployment configuration..."
@@ -52,7 +52,6 @@ jobs:
           fi
       
       - name: Deploy to FTP (Production)
-        environment: deploy
         if: github.event_name == 'pull_request'
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
