@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true npm run build"
+    "analyze": "ANALYZE=true npm run build",
+    "serve:static": "npx http-server ./out -p 8000",
+    "build:serve": "npm run build && npx http-server ./out -p 8000"
   },
   "dependencies": {
     "next": "15.3.0",

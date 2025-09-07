@@ -49,6 +49,16 @@ export const Navbar = React.memo(() => {
                 Artigos
               </Link>
               <Link
+                href="/services"
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                  isActive('/services')
+                    ? 'border-blue-500 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                }`}
+              >
+                Serviços
+              </Link>
+              <Link
                 href="/projects"
                 className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                   isActive('/projects')
@@ -77,6 +87,12 @@ export const Navbar = React.memo(() => {
                 }`}
               >
                 Sobre
+              </Link>
+              <Link
+                href="/#contato"
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700`}
+              >
+                Contato
               </Link>
             </div>
           </div>
@@ -138,6 +154,17 @@ export const Navbar = React.memo(() => {
             Artigos
           </Link>
           <Link
+            href="/services"
+            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+              isActive('/services')
+                ? 'border-blue-500 text-blue-700 bg-blue-50'
+                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+            }`}
+            onClick={closeMenu}
+          >
+            Serviços
+          </Link>
+          <Link
             href="/projects"
             className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
               isActive('/projects')
@@ -169,6 +196,13 @@ export const Navbar = React.memo(() => {
             onClick={closeMenu}
           >
             Sobre
+          </Link>
+          <Link
+            href="/#contato"
+            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700`}
+            onClick={closeMenu}
+          >
+            Contato
           </Link>
         </div>
       </div>

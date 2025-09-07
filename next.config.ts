@@ -5,6 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig: NextConfig = {
+  output: 'export',
   experimental: {
     // Enable Turbopack optimizations
     serverComponentsHmrCache: true, // Cache Server Components across HMR
@@ -21,6 +22,7 @@ const nextConfig: NextConfig = {
   
   // Image optimization configuration
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
