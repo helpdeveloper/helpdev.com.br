@@ -9,7 +9,7 @@ import { BlogCard } from './components/BlogCard';
 import { ProjectCard } from './components/ProjectCard';
 import { 
   FaGithub, FaMedium, FaEnvelope, FaInstagram, FaArrowRight,
-  FaBriefcase, FaCode, FaCloud, FaRocket, FaShieldAlt, FaChalkboardTeacher
+  FaBriefcase, FaCode, FaCloud, FaRocket, FaShieldAlt, FaChalkboardTeacher, FaUserGraduate
 } from 'react-icons/fa';
 import { featuredArticles, featuredProjects, featuredBlogPosts, contacts, quickLinks } from '@/data/content';
 import { ContactForm } from './components/ContactForm';
@@ -57,8 +57,13 @@ export default function Home() {
     },
     {
       icon: <FaChalkboardTeacher className="text-blue-600 text-3xl" />,
-      title: 'Mentoria & Treinamentos',
-      desc: 'Workshops e capacitação sob medida para seu time.'
+      title: 'Treinamentos Corporativos',
+      desc: 'Workshops e capacitação sob medida para seu time e empresa.'
+    },
+    {
+      icon: <FaUserGraduate className="text-blue-600 text-3xl" />,
+      title: 'Mentoria Especializada para Desenvolvedor',
+      desc: 'Orientação 1:1 personalizada para evolução técnica, carreira e boas práticas de desenvolvimento.'
     }
   ] as const;
 

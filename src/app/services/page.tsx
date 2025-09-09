@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaBriefcase, FaCode, FaCloud, FaShieldAlt, FaRocket, FaChalkboardTeacher, FaArrowRight } from 'react-icons/fa';
+import { FaBriefcase, FaCode, FaCloud, FaShieldAlt, FaRocket, FaChalkboardTeacher, FaUserGraduate, FaArrowRight } from 'react-icons/fa';
 import { Navbar } from '../components/Navbar';
 import { ContactForm } from '../components/ContactForm';
 
@@ -13,7 +13,8 @@ export default function ServicesPage() {
     { icon: <FaCloud className="text-blue-600 text-3xl" />, title: 'Cloud & DevOps', desc: 'Infra como código, pipelines, observabilidade e custos otimizados.' },
     { icon: <FaShieldAlt className="text-blue-600 text-3xl" />, title: 'Qualidade & Segurança', desc: 'Revisão de código, testes, performance e práticas de segurança.' },
     { icon: <FaRocket className="text-blue-600 text-3xl" />, title: 'Performance & Escala', desc: 'Perfis de desempenho, caching, filas e arquitetura orientada a eventos.' },
-    { icon: <FaChalkboardTeacher className="text-blue-600 text-3xl" />, title: 'Mentoria & Treinamentos', desc: 'Workshops e capacitação sob medida para seu time.' },
+    { icon: <FaChalkboardTeacher className="text-blue-600 text-3xl" />, title: 'Treinamentos Corporativos', desc: 'Workshops e capacitação sob medida para seu time e empresa.' },
+    { icon: <FaUserGraduate className="text-blue-600 text-3xl" />, title: 'Mentoria Especializada para Desenvolvedor', desc: 'Orientação 1:1 personalizada para evolução técnica, carreira e boas práticas de desenvolvimento.' },
   ] as const;
 
   const models = [
