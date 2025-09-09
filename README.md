@@ -32,8 +32,8 @@ O HelpDev é um portal dedicado a compartilhar conhecimento sobre desenvolviment
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/helpdev.git
-cd helpdev
+git clone https://github.com/gbzarelli/helpdev.com.br.git
+cd helpdev.com.br
 ```
 
 2. Instale as dependências:
@@ -89,7 +89,7 @@ O projeto inclui um arquivo `.htaccess` com as seguintes configurações:
 ## 📝 Estrutura do Projeto
 
 ```
-helpdev/
+helpdev.com.br/
 ├── src/
 │   ├── app/
 │   │   ├── components/

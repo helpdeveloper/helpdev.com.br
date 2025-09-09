@@ -92,6 +92,7 @@ export const contacts = [
 
 // Quick links data
 export const quickLinks = [
+  { title: "Serviços", description: "Consultoria e desenvolvimento", link: "/services", icon: "🧩" },
   { title: "Artigos", description: "Tutoriais e conteúdos técnicos", link: "/articles", icon: "📝" },
   { title: "Projetos", description: "Códigos open source e exemplos", link: "/projects", icon: "💻" },
   { title: "Blog/Gists", description: "Postagens rápidas e snippets", link: "/blog", icon: "📚" },

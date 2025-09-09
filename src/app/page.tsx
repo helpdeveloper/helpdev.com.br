@@ -7,8 +7,12 @@ import { Navbar } from './components/Navbar';
 import { ArticleCard } from './components/ArticleCard';
 import { BlogCard } from './components/BlogCard';
 import { ProjectCard } from './components/ProjectCard';
-import { FaGithub, FaMedium, FaEnvelope, FaInstagram, FaArrowRight } from 'react-icons/fa';
+import { 
+  FaGithub, FaMedium, FaEnvelope, FaInstagram, FaArrowRight,
+  FaBriefcase, FaCode, FaCloud, FaRocket, FaShieldAlt, FaChalkboardTeacher, FaUserGraduate
+} from 'react-icons/fa';
 import { featuredArticles, featuredProjects, featuredBlogPosts, contacts, quickLinks } from '@/data/content';
+import { ContactForm } from './components/ContactForm';
 
 // Create icon mapping for contacts
 const iconMap = {
@@ -25,34 +29,75 @@ const contactsWithIcons = contacts.map(contact => ({
 }));
 
 export default function Home() {
+  const services = [
+    {
+      icon: <FaBriefcase className="text-blue-600 text-3xl" />,
+      title: 'Consultoria em Arquitetura',
+      desc: 'Diagnóstico, desenho e evolução de arquiteturas escaláveis e seguras.'
+    },
+    {
+      icon: <FaCode className="text-blue-600 text-3xl" />,
+      title: 'Desenvolvimento de Projetos',
+      desc: 'Entrega ponta a ponta: backend, frontend, integrações e automações.'
+    },
+    {
+      icon: <FaCloud className="text-blue-600 text-3xl" />,
+      title: 'Cloud & DevOps',
+      desc: 'Infra como código, pipelines, observabilidade e custos otimizados.'
+    },
+    {
+      icon: <FaShieldAlt className="text-blue-600 text-3xl" />,
+      title: 'Qualidade & Segurança',
+      desc: 'Revisão de código, testes, performance e práticas de segurança.'
+    },
+    {
+      icon: <FaRocket className="text-blue-600 text-3xl" />,
+      title: 'Performance & Escala',
+      desc: 'Perfis de desempenho, caching, filas e arquitetura orientada a eventos.'
+    },
+    {
+      icon: <FaChalkboardTeacher className="text-blue-600 text-3xl" />,
+      title: 'Treinamentos Corporativos',
+      desc: 'Workshops e capacitação sob medida para seu time e empresa.'
+    },
+    {
+      icon: <FaUserGraduate className="text-blue-600 text-3xl" />,
+      title: 'Mentoria Especializada para Desenvolvedor',
+      desc: 'Orientação 1:1 personalizada para evolução técnica, carreira e boas práticas de desenvolvimento.'
+    }
+  ] as const;
+
+  const mailtoHref =
+    'mailto:gbzarelli@helpdev.com.br?subject=Proposta%20-%20Consultoria%20e%20Desenvolvimento&body=Olá%20Guilherme,%20gostaria%20de%20conversar%20sobre%20um%20projeto/consultoria.%20Resumo:%20';
+
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
       
-      {/* Hero Section */}
+      {/* Hero Section - Consulting positioning */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <div className="md:w-3/5">
               <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-                Compartilhando Conhecimento em Desenvolvimento de Software
+                Desenvolvimento de Software e Consultoria Técnica
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Portal dedicado a compartilhar artigos técnicos, projetos open source e snippets de código para auxiliar desenvolvedores.
+                Acelere seu produto com arquitetura sólida, código de qualidade e entregas previsíveis. Atuo em projetos ponta a ponta ou como consultor especializado.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
-                <Link 
-                  href="/articles" 
+                <a
+                  href={mailtoHref}
                   className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                 >
-                  Ver Artigos
+                  Solicitar proposta
                   <FaArrowRight className="ml-2" />
-                </Link>
+                </a>
                 <Link 
-                  href="/about" 
+                  href="#servicos" 
                   className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                 >
-                  Sobre o Autor
+                  Ver serviços
                 </Link>
               </div>
               <div className="flex gap-4">
@@ -85,7 +130,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Articles Section */}
+      {/* Services Section */}
+      <section id="servicos" className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">Serviços</h2>
+            <a href={mailtoHref} className="text-blue-600 hover:text-blue-800 flex items-center transition-colors">
+              Solicitar proposta
+              <FaArrowRight className="ml-2" />
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <div key={i} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 h-full">
+                <div className="mb-4">{s.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{s.title}</h3>
+                <p className="text-gray-600">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Como trabalho</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[ 
+              { n: '1', t: 'Descoberta', d: 'Entendemos objetivos, contexto e restrições.' },
+              { n: '2', t: 'Proposta', d: 'Escopo claro, prazos e investimento.' },
+              { n: '3', t: 'Execução', d: 'Sprints curtas, visibilidade e qualidade.' },
+              { n: '4', t: 'Entrega', d: 'Handover, documentação e próximo ciclo.' }
+            ].map((step) => (
+              <div key={step.n} className="bg-white p-6 rounded-xl shadow-md">
+                <div className="text-blue-600 text-sm font-bold mb-2">Etapa {step.n}</div>
+                <h3 className="text-lg font-semibold text-gray-900">{step.t}</h3>
+                <p className="text-gray-600 mt-1">{step.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Articles Section (social proof) */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-8">
@@ -141,7 +229,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects Section (portfolio) */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-8">
@@ -187,29 +275,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer CTA Section */}
-      <section className="bg-blue-600 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Pronto para aprender mais?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Explore nossos artigos, projetos e ferramentas para aprimorar suas habilidades em desenvolvimento de software.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link 
-              href="/articles" 
-              className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md shadow-sm text-blue-600 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-600 focus:ring-white transition-colors"
-            >
-              Começar Agora
-              <FaArrowRight className="ml-2" />
-            </Link>
-            <a 
-              href="https://github.com/gbzarelli" 
+      {/* Contact Section - static form */}
+      <section id="contato" className="bg-blue-600 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-white mb-4 text-center">Pronto para acelerar seu produto?</h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto text-center">Preencha o formulário e retorno com uma proposta objetiva.</p>
+          <ContactForm />
+          <div className="text-center mt-6">
+            <a
+              href="https://linkedin.com/in/gbzarelli/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-4 border border-white text-lg font-medium rounded-md shadow-sm text-white bg-transparent hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-600 focus:ring-white transition-colors"
+              className="inline-flex items-center px-6 py-3 border border-white text-base font-medium rounded-md shadow-sm text-white bg-transparent hover:bg-blue-700"
             >
-              Ver GitHub
-              <FaGithub className="ml-2" />
+              Falar no LinkedIn
             </a>
           </div>
         </div>

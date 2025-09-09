@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h2 className="text-2xl font-bold">HelpDev</h2>
-            <p className="text-gray-400 mt-2">Compartilhando conhecimento em desenvolvimento de software desde 2013</p>
+            <p className="text-gray-400 mt-2">Desenvolvimento de Software e Consultoria Técnica</p>
           </div>
           
           <div className="flex flex-col md:flex-row gap-8">
@@ -20,10 +20,12 @@ export const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold mb-2">Links</h3>
               <ul className="space-y-1">
                 <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+                <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors">Serviços</Link></li>
                 <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">Sobre</Link></li>
                 <li><Link href="/articles" className="text-gray-400 hover:text-white transition-colors">Artigos</Link></li>
                 <li><Link href="/projects" className="text-gray-400 hover:text-white transition-colors">Projetos</Link></li>
                 <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</Link></li>
+                <li><Link href="/#contato" className="text-gray-400 hover:text-white transition-colors">Contato</Link></li>
               </ul>
             </div>
             
@@ -47,4 +49,3 @@ export const Footer: React.FC = () => {
 };
 
 export default Footer;
-
