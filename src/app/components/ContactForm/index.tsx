@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 type Props = {
@@ -5,23 +7,50 @@ type Props = {
   subject?: string;
 };
 
+// Form validation function
+function validateForm(form: HTMLFormElement): boolean {
+  const requiredFields = form.querySelectorAll('input[required], textarea[required]');
+  for (const field of requiredFields) {
+    const input = field as HTMLInputElement | HTMLTextAreaElement;
+    if (!input.value.trim()) {
+      alert(`Por favor, preencha o campo: ${input.previousElementSibling?.textContent || 'obrigatório'}`);
+      input.focus();
+      return false;
+    }
+  }
+  return true;
+}
+
 export function ContactForm({
   redirectPath = '/thanks',
   subject = 'Novo contato - Proposta | HelpDev',
 }: Props) {
   const actionUrl = 'https://formsubmit.co/gbzarelli@helpdev.com.br';
+  const fullRedirectUrl = `https://helpdev.com.br${redirectPath}`;
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget;
+    if (!validateForm(form)) {
+      e.preventDefault();
+      return;
+    }
+    // Form is valid, let it submit normally to FormSubmit
+  };
 
   return (
     <form
       action={actionUrl}
       method="POST"
+      acceptCharset="UTF-8"
+      onSubmit={handleSubmit}
       className="bg-white text-gray-900 p-6 rounded-xl shadow-md max-w-2xl mx-auto text-left"
     >
       {/* FormSubmit configuration */}
-      <input type="hidden" name="_next" value={redirectPath} />
+      <input type="hidden" name="_next" value={fullRedirectUrl} />
       <input type="hidden" name="_subject" value={subject} />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="text" name="_honey" className="hidden" aria-hidden="true" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="text" name="_honey" style={{display: 'none'}} tabIndex={-1} autoComplete="off" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
