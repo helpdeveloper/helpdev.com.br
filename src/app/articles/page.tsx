@@ -7,6 +7,12 @@ import { useState, useMemo } from 'react';
 
 const articles = [
   {
+    title: "Arquitetura de Código Não Se Copia, Se Pensa",
+    description: "Reflexões sobre por que decisões arquiteturais devem nascer do contexto do produto em vez de copiar soluções prontas.",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9ea92skPoohu6JQm8PU58Q.png",
+    link: "https://medium.com/@guilherme.zarelli/arquitetura-de-c%C3%B3digo-n%C3%A3o-se-copia-se-pensa-6bedcc272134"
+  },
+  {
     title: "Replica Sets, Sharding e Escalabilidade Horizontal em Bancos NoSQL",
     description: "Neste artigo, vamos explorar como bancos NoSQL aplicam conceitos como Replica Sets e Sharding para enfrentar esses desafios de escala e resiliência.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*w_Yh7gGE_Rs8AgstoWNTnw.png",
