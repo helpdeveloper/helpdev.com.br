@@ -74,30 +74,30 @@ export default function Home() {
     <div className="min-h-screen bg-gray-100">
       <Navbar />
       
-      {/* Hero Section - Consulting positioning */}
+      {/* Hero Section - knowledge sharing focus */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <div className="md:w-3/5">
               <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-                Desenvolvimento de Software e Consultoria Técnica
+                Artigos e conhecimento aplicado em engenharia de software
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Acelere seu produto com arquitetura sólida, código de qualidade e entregas previsíveis. Atuo em projetos ponta a ponta ou como consultor especializado.
+                Compartilho experiências práticas sobre arquitetura, plataformas cloud e liderança técnica para ajudar times e devs a evoluírem com conteúdos acionáveis.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
-                <a
-                  href={mailtoHref}
+                <Link
+                  href="/articles"
                   className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                 >
-                  Solicitar proposta
+                  Explorar artigos
                   <FaArrowRight className="ml-2" />
-                </a>
+                </Link>
                 <Link 
-                  href="#servicos" 
+                  href="/blog" 
                   className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                 >
-                  Ver serviços
+                  Ver blog & gists
                 </Link>
               </div>
               <div className="flex gap-4">
@@ -129,50 +129,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Services Section */}
-      <section id="servicos" className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900">Serviços</h2>
-            <a href={mailtoHref} className="text-blue-600 hover:text-blue-800 flex items-center transition-colors">
-              Solicitar proposta
-              <FaArrowRight className="ml-2" />
-            </a>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((s, i) => (
-              <div key={i} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 h-full">
-                <div className="mb-4">{s.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{s.title}</h3>
-                <p className="text-gray-600">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Como trabalho</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[ 
-              { n: '1', t: 'Descoberta', d: 'Entendemos objetivos, contexto e restrições.' },
-              { n: '2', t: 'Proposta', d: 'Escopo claro, prazos e investimento.' },
-              { n: '3', t: 'Execução', d: 'Sprints curtas, visibilidade e qualidade.' },
-              { n: '4', t: 'Entrega', d: 'Handover, documentação e próximo ciclo.' }
-            ].map((step) => (
-              <div key={step.n} className="bg-white p-6 rounded-xl shadow-md">
-                <div className="text-blue-600 text-sm font-bold mb-2">Etapa {step.n}</div>
-                <h3 className="text-lg font-semibold text-gray-900">{step.t}</h3>
-                <p className="text-gray-600 mt-1">{step.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Featured Articles Section (social proof) */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -224,6 +180,28 @@ export default function Home() {
                 imageUrl={post.imageUrl}
                 tags={post.tags}
               />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="servicos" className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">Serviços</h2>
+            <a href={mailtoHref} className="text-blue-600 hover:text-blue-800 flex items-center transition-colors">
+              Solicitar proposta
+              <FaArrowRight className="ml-2" />
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <div key={i} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 h-full">
+                <div className="mb-4">{s.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{s.title}</h3>
+                <p className="text-gray-600">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
