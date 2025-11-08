@@ -1,6 +1,13 @@
 // Featured articles data
 export const featuredArticles = [
   {
+    id: 4,
+    title: "Arquitetura de Código Não Se Copia, Se Pensa",
+    description: "Por que decisões arquiteturais precisam nascer do contexto do produto em vez de replicar soluções prontas.",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9ea92skPoohu6JQm8PU58Q.png",
+    link: "https://medium.com/@guilherme.zarelli/arquitetura-de-c%C3%B3digo-n%C3%A3o-se-copia-se-pensa-6bedcc272134"
+  },
+  {
     id: 1,
     title: "Otimização da JVM para Contêineres: Memória e Garbage Collection",
     description: "Entenda como otimizar as configurações da JVM para ambientes containerizados, focando em gerenciamento de memória e garbage collection.",
@@ -20,6 +27,20 @@ export const featuredArticles = [
     description: "Uma abordagem prática sobre como modelar casos de uso e interações em seu domínio de negócio.",
     imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*_dwylzkbc7FphRGIFOfufQ.png",
     link: "https://medium.com/inside-picpay/o-use-case-modelando-as-intera%C3%A7%C3%B5es-do-seu-dom%C3%ADnio-c6c568270d0c"
+  },
+  {
+    id: 5,
+    title: "Java Garbage Collector — Por que precisamos conhecê-lo?",
+    description: "Um mergulho profundo no funcionamento do Garbage Collector do Java e sua importância.",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ANetWgPAOkjvBM05WxT4nw.png",
+    link: "https://medium.com/luizalabs/java-garbage-collector-porque-precisamos-conhec%C3%AA-lo-9d26ebb0a6d8"
+  },
+  {
+    id: 6,
+    title: "Observabilidade: Monitorando sua aplicação a partir de métricas",
+    description: "Como implementar observabilidade efetiva em aplicações usando métricas e monitoramento contínuo.",
+    imageUrl: "https://miro.medium.com/v2/resize:fit:750/format:webp/1*mYwgRrLGeUDaNEJ1yQbdvg.png",
+    link: "https://medium.com/luizalabs/observabilidade-monitorando-sua-aplicacao-a-partir-de-metricas-bd1b2d0ba1f8"
   }
 ] as const;
 
