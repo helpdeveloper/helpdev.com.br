@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidade — Velocímetro Alerta',
-  description: 'Política de privacidade do aplicativo gratuito Velocímetro Alerta para Android.',
+  title: 'Política de Privacidade / Privacy Policy — Velocímetro Alerta',
+  description: 'Política de privacidade em português e inglês do aplicativo gratuito Velocímetro Alerta para Android.',
   robots: {
     index: false,
     follow: false,
@@ -21,12 +21,16 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
       <article className="mx-auto max-w-4xl rounded-xl bg-white px-6 py-10 shadow-sm sm:px-10">
         <header className="mb-10 border-b border-gray-200 pb-6">
           <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-blue-700">Help DEV · Aplicativos</p>
-          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">Política de Privacidade</h1>
+          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">Política de Privacidade / Privacy Policy</h1>
           <p className="mt-3 text-lg text-gray-700">Velocímetro Alerta</p>
           <p className="mt-4 text-sm text-gray-500">Vigente desde {updatedAt}</p>
+          <nav aria-label="Language" className="mt-4 flex gap-4 text-sm">
+            <a className="text-blue-700 underline hover:text-blue-900" href="#portugues">Português</a>
+            <a className="text-blue-700 underline hover:text-blue-900" href="#english">English</a>
+          </nav>
         </header>
 
-        <div className="space-y-8 leading-7 text-gray-700">
+        <div id="portugues" lang="pt-BR" className="space-y-8 leading-7 text-gray-700">
           <section>
             <h2 className="mb-3 text-xl font-semibold text-gray-900">Aplicativo abrangido</h2>
             <p>
@@ -39,10 +43,10 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-gray-900">Localização e atividades</h2>
             <p>
-              Quando você inicia o rastreamento, o app usa a localização precisa do dispositivo para calcular velocidade,
-              distância e elevação e para formar o trajeto da atividade. O rastreamento pode continuar com a tela
-              desligada enquanto a atividade iniciada por você estiver em andamento; nesse período, o Android mantém
-              uma notificação de serviço ativo. O app não inicia o rastreamento automaticamente.
+              Quando você inicia uma atividade, o app usa sua localização precisa para calcular velocidade, distância,
+              elevação, registrar o percurso e gerar alertas de velocidade por voz, mesmo quando o app está em segundo
+              plano ou a tela está apagada. O Android mantém uma notificação de serviço ativo, conforme as configurações
+              de notificação. O app não inicia o rastreamento automaticamente.
             </p>
             <p className="mt-3">
               A localização e as métricas da atividade são processadas no dispositivo. A Help DEV não recebe esses
@@ -133,6 +137,116 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
               a esta política, use o{' '}
               <a className="text-blue-700 underline hover:text-blue-900" href="https://helpdev.com.br/#contato">
                 canal de contato da Help DEV
+              </a>.
+            </p>
+          </section>
+        </div>
+
+        <div id="english" lang="en" className="mt-16 space-y-8 border-t border-gray-200 pt-10 leading-7 text-gray-700">
+          <h2 className="text-2xl font-bold text-gray-900">English version</h2>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">App covered by this policy</h3>
+            <p>
+              This policy applies to the free Velocímetro Alerta Android app, package
+              <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.velocimetroalerta</code>.
+              The app does not require an account and does not offer in-app purchases or subscriptions.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Location and activities</h3>
+            <p>
+              When you start an activity, the app uses your precise location to calculate speed, distance, and elevation,
+              record your route, and provide spoken speed alerts, even while the app is in the background or the screen
+              is off. Android keeps an ongoing foreground-service notification visible, subject to your notification
+              settings. The app does not start tracking automatically.
+            </p>
+            <p className="mt-3">
+              Location and activity metrics are processed on your device. Help DEV does not receive this data on its
+              servers, the app does not require a user account, and the app does not keep a remote activity history.
+              Location access is required for speed and tracking features; you can deny or revoke it in Android
+              settings, but those features may stop working.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Bluetooth sensors and health and fitness data</h3>
+            <p>
+              If you configure a compatible Bluetooth sensor, the app may read data such as heart rate and cadence during
+              an activity. This data is processed on your device to show metrics and activity zones. Bluetooth access
+              lets the app find or connect to the sensor you selected; this data is not sent to Help DEV.
+            </p>
+            <p className="mt-3">
+              Heart-rate information and other metrics are for general fitness information. The app is not a medical
+              device, does not diagnose conditions, and does not replace professional medical advice.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Preferences and storage</h3>
+            <p>
+              App preferences, including speed limits, alerts, configured sensors, and heart-rate zones, are stored
+              locally by the app. Depending on your device and account settings, Android may include local app data in a
+              backup or transfer it to another device. Android and the backup service you choose manage those backups;
+              Help DEV does not control them.
+            </p>
+            <p className="mt-3">
+              The app does not automatically send location, activity metrics, or preferences to a server and does not
+              maintain its own remote activity-history service.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">GPX export and file sharing</h3>
+            <p>
+              You initiate each export. The app creates a GPX file with route points, coordinates, timestamps, and
+              elevation; when available, it may also include heart rate, cadence, temperature, and humidity. Android&apos;s
+              file picker lets you choose where to save it. If you later use Android sharing, the file is sent to the app
+              or service you select.
+            </p>
+            <p className="mt-3">
+              After export, the file is under your control and may contain precise route and activity information. The
+              destination you choose handles the file under its own privacy terms and practices. Delete the copy from
+              that destination if you no longer want to keep it.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Ads, analytics, and identifiers</h3>
+            <p>
+              Velocímetro Alerta does not show ads and does not integrate advertising, analytics, or attribution SDKs.
+              The app does not use the Android Advertising ID or send activity data to Help DEV for advertising or
+              profiling.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Audience</h3>
+            <p>
+              The declared Google Play audience is teens aged 13–17 and adults. The app is not designed for children
+              under 13. It contains no ads and does not use activity data for advertising.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Retention and deletion</h3>
+            <p>
+              Preferences remain in local app storage until you clear the app&apos;s data in Android settings or uninstall
+              the app. Activity data that you have not exported is not kept in a remote Help DEV history. You are
+              responsible for deleting exported GPX files and backup copies from the service or device where they were
+              saved, using that destination&apos;s available options.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Changes and contact</h3>
+            <p>
+              This policy may be updated when the app or the practices described here change. The effective date at the
+              top of this page identifies the current version. For questions or requests about this policy, use Help
+              DEV&apos;s{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://helpdev.com.br/#contato">
+                contact channel
               </a>.
             </p>
           </section>
