@@ -35,7 +35,18 @@ jobs:
           echo "Build output files:"
           find out/ -type f | head -10
       
-      - name: Deploy to FTP (Production)
+      - name: Recreate and deploy Next.js assets
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/_next/
+          server-dir: ./_next/
+          dangerous-clean-slate: true
+
+      - name: Deploy site files to FTP
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -49,5 +60,6 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/.DS_Store
+            **/_next/**
           dry-run: false
 
