@@ -6,7 +6,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://helpdev.com.br';
   const now = new Date();
 
-  const routes = ['/', '/services', '/about', '/articles', '/projects', '/blog', '/thanks'];
+  const routes = [
+    '/',
+    '/services',
+    '/about',
+    '/articles',
+    '/projects',
+    '/blog',
+    '/thanks',
+    '/apps/consulta-endereco/privacidade',
+  ];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
