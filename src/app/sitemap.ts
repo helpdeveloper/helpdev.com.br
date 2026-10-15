@@ -14,7 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/projects',
     '/blog',
     '/thanks',
-    '/apps/consulta-endereco/privacidade',
   ];
 
   return routes.map((route) => ({
