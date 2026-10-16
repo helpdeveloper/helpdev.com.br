@@ -123,3 +123,7 @@ Guilherme Biff Zarelli
 - **GitHub**: [https://github.com/gbzarelli](https://github.com/gbzarelli)
 - **Articles in Medium**: [https://medium.com/@guilherme.zarelli](https://medium.com/@guilherme.zarelli)
 - **Email**: [gbzarelli@helpdev.com.br](mailto:gbzarelli@helpdev.com.br)
+
+## Google Analytics
+
+O site envia pageviews para a propriedade GA4 `HelpDev Website` (`G-FYBBYE3DXD`), incluindo navegações internas. Para usar outra propriedade, defina `NEXT_PUBLIC_GA_ID` no ambiente de build.
