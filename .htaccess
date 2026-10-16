@@ -4,6 +4,9 @@ RewriteBase /
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Consolidar a rota antiga de serviços na landing page canônica.
+RewriteRule ^services/?$ / [R=301,L]
+
 # Redirecionar todas as URLs não encontradas para a home
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -48,4 +51,4 @@ Options -Indexes
   Header set X-XSS-Protection "1; mode=block"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
-</IfModule> 
+</IfModule>

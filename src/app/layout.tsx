@@ -4,15 +4,16 @@ import "./globals.css";
 import Footer from "./components/Footer";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import Script from "next/script";
+import { serviceOfferings } from "@/data/services";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "HelpDev — Desenvolvimento de Software e Consultoria Técnica",
+    default: "HelpDev — Serviços de Consultoria em Desenvolvimento de Software",
     template: "%s | HelpDev"
   },
-  description: "Consultoria em arquitetura, desenvolvimento de software, cloud/DevOps, performance e mentoria. Projetos sob medida com qualidade e previsibilidade.",
+  description: "Consultoria em desenvolvimento de software, arquitetura, modernização de sistemas, cloud e DevOps para acelerar produtos com qualidade e previsibilidade.",
   keywords: ["consultoria de software", "desenvolvimento de software", "arquitetura de software", "devops", "cloud", "java", "node", "react", "next.js", "performance", "mentoria"],
   authors: [{ name: "Guilherme Biff Zarelli" }],
   creator: "Guilherme Biff Zarelli",
@@ -27,22 +28,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://helpdev.com.br",
-    title: "HelpDev — Desenvolvimento de Software e Consultoria Técnica",
-    description: "Consultoria em arquitetura, desenvolvimento, cloud/DevOps e performance. Projetos sob medida com entregas previsíveis.",
+    title: "HelpDev — Serviços de Consultoria em Desenvolvimento de Software",
+    description: "Consultoria em desenvolvimento de software, arquitetura, modernização de sistemas, cloud e DevOps.",
     siteName: "HelpDev",
     images: [
       {
         url: "https://helpdev.com.br/images/logo.png",
         width: 1200,
         height: 630,
-        alt: "HelpDev — Desenvolvimento de Software e Consultoria Técnica",
+        alt: "HelpDev — Serviços de Consultoria em Desenvolvimento de Software",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HelpDev — Desenvolvimento de Software e Consultoria Técnica",
-    description: "Consultoria em arquitetura, desenvolvimento, cloud/DevOps e performance.",
+    title: "HelpDev — Serviços de Consultoria em Desenvolvimento de Software",
+    description: "Consultoria em desenvolvimento de software, arquitetura, modernização de sistemas, cloud e DevOps.",
     images: ["https://helpdev.com.br/images/logo.png"],
     creator: "@gbzarelli",
     site: "@_helpdev",
@@ -84,7 +85,7 @@ export default function RootLayout({
             url: 'https://helpdev.com.br',
             logo: 'https://helpdev.com.br/images/logo.png',
             image: 'https://helpdev.com.br/images/logo.png',
-            description: 'Consultoria e desenvolvimento de software: arquitetura, cloud/DevOps, performance e mentoria.',
+            description: 'Consultoria em desenvolvimento de software, arquitetura, modernização de sistemas, cloud, DevOps, performance e mentoria.',
             areaServed: ['BR', 'Global'],
             sameAs: [
               'https://github.com/gbzarelli',
@@ -101,14 +102,14 @@ export default function RootLayout({
             hasOfferCatalog: {
               '@type': 'OfferCatalog',
               name: 'Serviços de Consultoria',
-              itemListElement: [
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Consultoria em Arquitetura' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Desenvolvimento de Projetos' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Cloud & DevOps' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Qualidade & Segurança' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Performance & Escala' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Mentoria & Treinamentos' } }
-              ]
+              itemListElement: serviceOfferings.map((service) => ({
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: service.name,
+                  description: service.description,
+                },
+              })),
             }
           }) }}
         />

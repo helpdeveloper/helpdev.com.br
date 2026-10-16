@@ -39,6 +39,16 @@ export const Navbar = React.memo(() => {
             {/* Desktop Menu */}
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link
+                href="/"
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                  isActive('/')
+                    ? 'border-blue-500 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                }`}
+              >
+                Serviços
+              </Link>
+              <Link
                 href="/articles"
                 className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                   isActive('/articles')
@@ -47,16 +57,6 @@ export const Navbar = React.memo(() => {
                 }`}
               >
                 Artigos
-              </Link>
-              <Link
-                href="/services"
-                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                  isActive('/services')
-                    ? 'border-blue-500 text-gray-900'
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                }`}
-              >
-                Serviços
               </Link>
               <Link
                 href="/projects"
@@ -143,6 +143,17 @@ export const Navbar = React.memo(() => {
       <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
         <div className="pt-2 pb-3 space-y-1">
           <Link
+            href="/"
+            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+              isActive('/')
+                ? 'border-blue-500 text-blue-700 bg-blue-50'
+                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+            }`}
+            onClick={closeMenu}
+          >
+            Serviços
+          </Link>
+          <Link
             href="/articles"
             className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
               isActive('/articles')
@@ -152,17 +163,6 @@ export const Navbar = React.memo(() => {
             onClick={closeMenu}
           >
             Artigos
-          </Link>
-          <Link
-            href="/services"
-            className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
-              isActive('/services')
-                ? 'border-blue-500 text-blue-700 bg-blue-50'
-                : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
-            }`}
-            onClick={closeMenu}
-          >
-            Serviços
           </Link>
           <Link
             href="/projects"

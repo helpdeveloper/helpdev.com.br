@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold mb-2">Links</h3>
               <ul className="space-y-1">
                 <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
-                <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors">Serviços</Link></li>
+                <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Serviços</Link></li>
                 <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">Sobre</Link></li>
                 <li><Link href="/articles" className="text-gray-400 hover:text-white transition-colors">Artigos</Link></li>
                 <li><Link href="/projects" className="text-gray-400 hover:text-white transition-colors">Projetos</Link></li>
