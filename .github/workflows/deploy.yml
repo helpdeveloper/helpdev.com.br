@@ -35,7 +35,7 @@ jobs:
           echo "Build output files:"
           find out/ -type f | head -10
       
-      - name: Deploy Next.js assets
+      - name: Deploy Next.js assets (excluding app chunks)
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -44,6 +44,20 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/_next/
           server-dir: ./_next/
+          state-name: .ftp-deploy-sync-state.json
+          exclude: |
+            **/static/chunks/app/**
+
+      - name: Deploy Next.js app chunks
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/_next/static/chunks/app/
+          server-dir: ./_next/static/chunks/app/
+          state-name: .ftp-deploy-sync-state.json
 
       - name: Deploy site files to FTP
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
