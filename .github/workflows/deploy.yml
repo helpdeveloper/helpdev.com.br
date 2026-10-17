@@ -37,6 +37,24 @@ jobs:
           ls -la out/
           echo "Build output files:"
           find out/ -type f | head -10
+
+      - name: Mask serialized FTP credentials
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        env:
+          FTP_HOST_JSON: ${{ toJSON(secrets.FTP_HOST) }}
+          FTP_USERNAME_JSON: ${{ toJSON(secrets.FTP_USERNAME) }}
+          FTP_PASSWORD_JSON: ${{ toJSON(secrets.FTP_PASSWORD) }}
+        run: |
+          mask() {
+            local value="$1"
+            value="${value//%/%25}"
+            value="${value//$'\r'/%0D}"
+            value="${value//$'\n'/%0A}"
+            printf '::add-mask::%s\n' "$value"
+          }
+          mask "$FTP_HOST_JSON"
+          mask "$FTP_USERNAME_JSON"
+          mask "$FTP_PASSWORD_JSON"
       
       - name: Deploy Next.js assets (excluding app chunks)
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
