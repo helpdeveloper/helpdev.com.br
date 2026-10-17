@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-const updatedAt = '14 de outubro de 2026';
+const updatedAt = '17 de outubro de 2026';
 
 export default function VelocimetroAlertaPrivacyPolicyPage() {
   return (
@@ -35,7 +35,7 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             <h2 className="mb-3 text-xl font-semibold text-gray-900">Aplicativo abrangido</h2>
             <p>
               Esta política se aplica ao aplicativo gratuito Velocímetro Alerta para Android, publicado com o
-              identificador <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.velocimetroalerta</code>.
+              identificador <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.velocimetroalerta.v2</code>.
               O aplicativo não exige criação de conta e não oferece compras ou assinaturas dentro do app.
             </p>
           </section>
@@ -51,9 +51,30 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             <p className="mt-3">
               A localização e as métricas da atividade são processadas no dispositivo. A Help DEV não recebe esses
               dados em seus servidores, não mantém uma conta de usuário para o app e o app não mantém um histórico
-              remoto das atividades. A permissão de localização é necessária para os recursos de velocidade e
+              remoto das atividades. Os dados enviados ao Google Maps SDK ao exibir um mapa estão descritos na seção
+              abaixo. A permissão de localização é necessária para os recursos de velocidade e
               rastreamento; você pode recusá-la ou revogá-la nas configurações do Android, mas esses recursos podem
               deixar de funcionar.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="mb-3 text-xl font-semibold text-gray-900">Mapas e dados enviados ao Google</h2>
+            <p>
+              O app usa o Maps SDK for Android para mostrar mapas de atividades. Para carregar o mapa, solicitações
+              enviadas ao Google incluem a área exibida; essa área pode revelar a região do percurso enquanto o mapa
+              está aberto. O SDK coleta automaticamente metadados do dispositivo e das solicitações, como sistema
+              operacional, modelo e fabricante do aparelho e versão do SDK, além do endereço IP, de um identificador
+              pseudônimo específico do Maps SDK, de métricas de falhas e de stack traces de falhas dentro do SDK.
+            </p>
+            <p className="mt-3">
+              Conforme o uso do mapa e das APIs de câmera, o SDK também pode coletar eventos de interação, como mover
+              ou aplicar zoom no mapa. Esses dados são enviados pelo SDK diretamente ao Google para fornecer e
+              melhorar os serviços do Maps. A Help DEV não recebe esses dados nos seus servidores. O Google trata
+              esses dados conforme a{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://policies.google.com/privacy?hl=pt-BR">
+                Política de Privacidade do Google
+              </a>.
             </p>
           </section>
 
@@ -104,9 +125,9 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-gray-900">Anúncios, análise e identificadores</h2>
             <p>
-              O Velocímetro Alerta não exibe anúncios e não integra SDKs de publicidade, análise ou atribuição. O app
-              não usa o ID de publicidade do Android e não envia dados de atividade para a Help DEV para publicidade
-              ou criação de perfis.
+              O Velocímetro Alerta não exibe anúncios, não integra SDKs de publicidade ou atribuição e não usa o ID de
+              publicidade do Android. O app não envia dados de atividade à Help DEV para análise, publicidade ou
+              criação de perfis. A coleta do Maps SDK é descrita na seção sobre mapas.
             </p>
           </section>
 
@@ -149,7 +170,7 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             <h3 className="mb-3 text-xl font-semibold text-gray-900">App covered by this policy</h3>
             <p>
               This policy applies to the free Velocímetro Alerta Android app, package
-              <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.velocimetroalerta</code>.
+              <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.velocimetroalerta.v2</code>.
               The app does not require an account and does not offer in-app purchases or subscriptions.
             </p>
           </section>
@@ -165,8 +186,28 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             <p className="mt-3">
               Location and activity metrics are processed on your device. Help DEV does not receive this data on its
               servers, the app does not require a user account, and the app does not keep a remote activity history.
-              Location access is required for speed and tracking features; you can deny or revoke it in Android
-              settings, but those features may stop working.
+              Data sent to the Google Maps SDK when a map is shown is described below. Location access is required for
+              speed and tracking features; you can deny or revoke it in Android settings, but those features may stop
+              working.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Maps and data sent to Google</h3>
+            <p>
+              The app uses the Maps SDK for Android to show activity maps. To load a map, requests sent to Google
+              include the area being displayed; this area may reveal the route region while the map is open. The SDK
+              automatically collects device and request metadata, such as operating system, device model and brand,
+              and SDK version, as well as IP address, a Maps SDK-specific pseudonymous identifier, crash metrics, and
+              stack traces for crashes inside the SDK.
+            </p>
+            <p className="mt-3">
+              Depending on how the map and camera APIs are used, the SDK may also collect interaction events such as
+              panning and zooming. The SDK sends this data directly to Google to provide and improve Maps services.
+              Help DEV does not receive this data on its servers. Google handles it under the{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://policies.google.com/privacy?hl=en">
+                Google Privacy Policy
+              </a>.
             </p>
           </section>
 
@@ -215,9 +256,9 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
           <section>
             <h3 className="mb-3 text-xl font-semibold text-gray-900">Ads, analytics, and identifiers</h3>
             <p>
-              Velocímetro Alerta does not show ads and does not integrate advertising, analytics, or attribution SDKs.
-              The app does not use the Android Advertising ID or send activity data to Help DEV for advertising or
-              profiling.
+              Velocímetro Alerta does not show ads, integrate advertising or attribution SDKs, or use the Android
+              Advertising ID. The app does not send activity data to Help DEV for analytics, advertising, or profiling.
+              Maps SDK collection is described in the maps section above.
             </p>
           </section>
 
