@@ -46,9 +46,9 @@ jobs:
           attempt_limit: 3
           attempt_delay: 15000
           with: |
-            server: ${{ secrets.FTP_HOST }}
-            username: ${{ secrets.FTP_USERNAME }}
-            password: ${{ secrets.FTP_PASSWORD }}
+            server: ${{ toJSON(secrets.FTP_HOST) }}
+            username: ${{ toJSON(secrets.FTP_USERNAME) }}
+            password: ${{ toJSON(secrets.FTP_PASSWORD) }}
             local-dir: ./out/_next/
             server-dir: ./_next/
             state-name: .ftp-deploy-sync-state.json
@@ -63,9 +63,9 @@ jobs:
           attempt_limit: 3
           attempt_delay: 15000
           with: |
-            server: ${{ secrets.FTP_HOST }}
-            username: ${{ secrets.FTP_USERNAME }}
-            password: ${{ secrets.FTP_PASSWORD }}
+            server: ${{ toJSON(secrets.FTP_HOST) }}
+            username: ${{ toJSON(secrets.FTP_USERNAME) }}
+            password: ${{ toJSON(secrets.FTP_PASSWORD) }}
             local-dir: ./out/_next/static/chunks/app/
             server-dir: ./_next/static/chunks/app/
             state-name: .ftp-deploy-sync-state.json
@@ -78,9 +78,9 @@ jobs:
           attempt_limit: 3
           attempt_delay: 15000
           with: |
-            server: ${{ secrets.FTP_HOST }}
-            username: ${{ secrets.FTP_USERNAME }}
-            password: ${{ secrets.FTP_PASSWORD }}
+            server: ${{ toJSON(secrets.FTP_HOST) }}
+            username: ${{ toJSON(secrets.FTP_USERNAME) }}
+            password: ${{ toJSON(secrets.FTP_PASSWORD) }}
             local-dir: ./out/
             server-dir: ./
             exclude: |
