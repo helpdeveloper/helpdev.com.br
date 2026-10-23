@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidade — Minha Reforma',
+  title: 'Política de Privacidade — Minha Obra',
   description:
-    'Política de privacidade do aplicativo Minha Reforma — Controle de Gastos de Obra para Android e iOS.',
+    'Política de privacidade do aplicativo Minha Obra para Android e iOS.',
   robots: {
     index: false,
     follow: false,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const updatedAt = '22 de outubro de 2026';
 
-export default function MinhaReformaPrivacyPolicyPage() {
+export default function MinhaObraPrivacyPolicyPage() {
   return (
     <main className="min-h-screen bg-gray-100 py-12 sm:py-16">
       <article className="mx-auto max-w-4xl rounded-xl bg-white px-6 py-10 shadow-sm sm:px-10">
@@ -28,7 +28,7 @@ export default function MinhaReformaPrivacyPolicyPage() {
             Política de Privacidade
           </h1>
           <p className="mt-3 text-lg text-gray-700">
-            Minha Reforma — Controle de Gastos de Obra
+            Minha Obra
           </p>
           <p className="mt-4 text-sm text-gray-500">Vigente desde {updatedAt}</p>
         </header>
@@ -39,9 +39,12 @@ export default function MinhaReformaPrivacyPolicyPage() {
               Aplicativo abrangido
             </h2>
             <p>
-              Esta política se aplica ao Minha Reforma — Controle de Gastos de
-              Obra, para Android e iOS, publicado pela Help DEV com os
-              identificadores <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.minhareforma</code>.
+              Esta política se aplica ao Minha Obra, para Android e iOS,
+              publicado pela Help DEV com o identificador{' '}
+              <code className="break-all rounded bg-gray-100 px-1">
+                br.com.helpdev.minhareforma
+              </code>
+              .
               O app ajuda o proprietário a organizar obras, orçamento, gastos e
               pagamentos. Não exige cadastro ou criação de conta na Help DEV.
             </p>
@@ -103,8 +106,12 @@ export default function MinhaReformaPrivacyPolicyPage() {
               anúncios não personalizados podem usar identificadores para
               funções como limitar a frequência e gerar relatórios agregados.
               A Help DEV não envia ao SDK valores, endereços, descrições ou
-              fornecedores cadastrados nas obras, nem os usa para segmentar
-              anúncios.
+              fornecedores cadastrados nas obras. Os pedidos de banner incluem
+              somente palavras-chave gerais predefinidas — “obra”,
+              “construção”, “reforma” e “materiais de construção” — para
+              indicar o tema do aplicativo. Elas não são extraídas dos dados
+              cadastrados por você e não personalizam anúncios com base nas
+              informações da sua obra.
             </p>
             <p className="mt-3">
               Na configuração atual, o app solicita anúncios não personalizados
@@ -151,11 +158,11 @@ export default function MinhaReformaPrivacyPolicyPage() {
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-gray-900">
-              Minha Reforma Pro e compras nas lojas
+              Minha Obra Pro e compras nas lojas
             </h2>
             <p>
-              A compra única do Minha Reforma Pro remove os anúncios e libera a
-              exportação de relatórios em PDF. A compra e a restauração são
+              A compra única do Minha Obra Pro remove os anúncios e libera a
+              exportação de relatórios em PDF e CSV. A compra e a restauração são
               processadas pela Google Play ou pela Apple App Store, conforme o
               aparelho, e seguem os termos e práticas de privacidade da loja.
               O app recebe o resultado necessário para liberar o Pro e mantém
@@ -170,13 +177,14 @@ export default function MinhaReformaPrivacyPolicyPage() {
               Relatórios e compartilhamento
             </h2>
             <p>
-              O relatório PDF Pro é gerado no aparelho a partir dos dados locais
-              da obra. Se você escolher exportá-lo ou compartilhá-lo, o sistema
-              operacional mostrará os destinos disponíveis e o arquivo será
-              entregue ao aplicativo ou serviço que você selecionar. O destino
-              escolhido poderá tratar e armazenar o relatório conforme os
-              próprios termos e práticas de privacidade. A Help DEV não recebe
-              automaticamente uma cópia do PDF.
+              Os relatórios Pro em PDF e CSV são gerados no aparelho a partir
+              dos dados locais da obra. Se você escolher exportar ou
+              compartilhar um arquivo, o sistema operacional mostrará os
+              destinos disponíveis e o arquivo será entregue ao aplicativo ou
+              serviço que você selecionar. O destino escolhido poderá tratar e
+              armazenar o relatório conforme os próprios termos e práticas de
+              privacidade. A Help DEV não recebe automaticamente uma cópia dos
+              arquivos exportados.
             </p>
           </section>
 
@@ -186,11 +194,11 @@ export default function MinhaReformaPrivacyPolicyPage() {
             </h2>
             <p>
               Os dados permanecem no aparelho até que você limpe os dados do
-              Minha Reforma nas configurações do sistema ou desinstale o
+              Minha Obra nas configurações do sistema ou desinstale o
               aplicativo. Registros ocultados ou removidos da visualização
               podem continuar no banco local da instalação. Limpar os dados do
               app ou desinstalá-lo não remove cópias que já estejam em backups
-              do sistema, relatórios PDF exportados ou serviços de terceiros;
+              do sistema, relatórios PDF ou CSV exportados ou serviços de terceiros;
               gerencie essas cópias no aparelho ou no destino correspondente.
               Apagar os dados locais também pode remover a indicação local do
               Pro; compras elegíveis podem ser restauradas pela loja usada para
