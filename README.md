@@ -126,4 +126,4 @@ Guilherme Biff Zarelli
 
 ## Google Analytics
 
-O site envia pageviews para a propriedade GA4 `HelpDev Website` (`G-FYBBYE3DXD`), incluindo navegações internas. Para usar outra propriedade, defina `NEXT_PUBLIC_GA_ID` no ambiente de build.
+O site envia pageviews para o fluxo web `Help Dev - GA4` (`G-VWDH18RX25`), incluindo navegações internas. Para usar outra propriedade, defina `NEXT_PUBLIC_GA_ID` no ambiente de build.

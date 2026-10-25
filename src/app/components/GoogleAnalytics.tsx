@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 
-const measurementId = process.env.NEXT_PUBLIC_GA_ID || "G-FYBBYE3DXD";
+const measurementId = process.env.NEXT_PUBLIC_GA_ID || "G-VWDH18RX25";
 
 declare global {
   interface Window {
