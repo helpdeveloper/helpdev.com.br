@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 
@@ -16,23 +16,35 @@ declare global {
 export default function GoogleAnalytics() {
   const pathname = usePathname();
   const lastTrackedPath = useRef<string | null>(null);
+  const pendingPageViews = useRef<Array<{ pathname: string; pageTitle: string }>>([]);
+  const [gtagReady, setGtagReady] = useState(false);
 
   useEffect(() => {
-    if (!pathname || lastTrackedPath.current === pathname) return;
+    if (!pathname) return;
 
-    lastTrackedPath.current = pathname;
-    window.gtag("event", "page_view", {
-      page_path: pathname,
-      page_location: `${window.location.origin}${pathname}`,
-      page_title: document.title,
-    });
-  }, [pathname]);
+    if (lastTrackedPath.current !== pathname) {
+      lastTrackedPath.current = pathname;
+      pendingPageViews.current.push({ pathname, pageTitle: document.title });
+    }
+
+    if (!gtagReady || typeof window.gtag !== "function") return;
+
+    for (const pageView of pendingPageViews.current) {
+      window.gtag("event", "page_view", {
+        page_path: pageView.pathname,
+        page_location: `${window.location.origin}${pageView.pathname}`,
+        page_title: pageView.pageTitle,
+      });
+    }
+    pendingPageViews.current = [];
+  }, [gtagReady, pathname]);
 
   return (
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
         strategy="afterInteractive"
+        onReady={() => setGtagReady(true)}
       />
       <Script id="google-analytics-init" strategy="beforeInteractive">
         {`window.dataLayer = window.dataLayer || [];
