@@ -7,7 +7,7 @@ export default function GoogleAnalytics() {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
       <Script id="google-analytics-init" strategy="beforeInteractive">
         {`window.dataLayer = window.dataLayer || [];
