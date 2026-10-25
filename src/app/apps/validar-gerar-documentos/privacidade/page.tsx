@@ -69,6 +69,11 @@ export default function AppPrivacyPolicyPage() {
                 </a>
               </li>
               <li>
+                <a className="text-blue-700 underline hover:text-blue-900" href="https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/documentos-tecnicos/cnpj">
+                  Cálculo do dígito verificador do CNPJ — Receita Federal
+                </a>
+              </li>
+              <li>
                 <a className="text-blue-700 underline hover:text-blue-900" href="https://www.gov.br/pt-br/servicos/realizar-inscricao-no-inss">
                   PIS/NIT — INSS
                 </a>
