@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-const updatedAt = '22 de outubro de 2026';
+const updatedAt = '25 de outubro de 2026';
 
 export default function AppPrivacyPolicyPage() {
   return (
@@ -33,6 +33,11 @@ export default function AppPrivacyPolicyPage() {
               Esta política se aplica à edição gratuita com anúncios do aplicativo Validador de documentos,
               identificada pelo package <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.validador.v3</code>.
             </p>
+            <p className="mt-3">
+              O aplicativo é independente e não é afiliado, autorizado, endossado ou representante de órgãos
+              governamentais. Ele faz verificações matemáticas locais e não se conecta aos serviços oficiais listados
+              abaixo.
+            </p>
           </section>
 
           <section>
@@ -44,6 +49,41 @@ export default function AppPrivacyPolicyPage() {
               cadastral ou titularidade. Os valores digitados são processados no dispositivo. A Help DEV não os recebe
               em seus servidores, não mantém conta de usuário e não cria histórico desses valores.
             </p>
+          </section>
+
+          <section>
+            <h2 className="mb-3 text-xl font-semibold text-gray-900">Fontes oficiais para consulta externa</h2>
+            <p>
+              Para confirmar informações cadastrais ou consultar serviços oficiais, use diretamente os canais dos
+              órgãos responsáveis. O aplicativo não acessa essas bases nem é endossado por esses órgãos.
+            </p>
+            <ul className="mt-3 list-disc space-y-2 pl-6">
+              <li>
+                <a className="text-blue-700 underline hover:text-blue-900" href="https://www.gov.br/pt-br/servicos/consultar-cadastro-de-pessoas-fisicas">
+                  CPF — Receita Federal
+                </a>
+              </li>
+              <li>
+                <a className="text-blue-700 underline hover:text-blue-900" href="https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/cnpj-alfanumerico/cnpj-alfa">
+                  CNPJ alfanumérico — Receita Federal
+                </a>
+              </li>
+              <li>
+                <a className="text-blue-700 underline hover:text-blue-900" href="https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/documentos-tecnicos/cnpj">
+                  Cálculo do dígito verificador do CNPJ — Receita Federal
+                </a>
+              </li>
+              <li>
+                <a className="text-blue-700 underline hover:text-blue-900" href="https://www.gov.br/pt-br/servicos/realizar-inscricao-no-inss">
+                  PIS/NIT — INSS
+                </a>
+              </li>
+              <li>
+                <a className="text-blue-700 underline hover:text-blue-900" href="https://www.gov.br/pt-br/servicos/consultar-dados-de-veiculo-na-base-renavam">
+                  RENAVAM — Senatran
+                </a>
+              </li>
+            </ul>
           </section>
 
           <section>
