@@ -16,11 +16,18 @@ declare global {
 export default function GoogleAnalytics() {
   const pathname = usePathname();
   const lastTrackedPath = useRef<string | null>(null);
+  const hasTrackedInitialPage = useRef(false);
   const pendingPageViews = useRef<Array<{ pathname: string; pageTitle: string }>>([]);
   const [gtagReady, setGtagReady] = useState(false);
 
   useEffect(() => {
     if (!pathname) return;
+
+    if (!hasTrackedInitialPage.current) {
+      hasTrackedInitialPage.current = true;
+      lastTrackedPath.current = pathname;
+      return;
+    }
 
     if (lastTrackedPath.current !== pathname) {
       lastTrackedPath.current = pathname;
@@ -50,7 +57,7 @@ export default function GoogleAnalytics() {
         {`window.dataLayer = window.dataLayer || [];
           window.gtag = window.gtag || function(...args) { window.dataLayer.push(args); };
           window.gtag('js', new Date());
-          window.gtag('config', '${measurementId}', { send_page_view: false });`}
+          window.gtag('config', '${measurementId}');`}
       </Script>
     </>
   );
