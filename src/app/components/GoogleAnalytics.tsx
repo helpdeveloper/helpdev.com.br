@@ -7,7 +7,7 @@ export default function GoogleAnalytics() {
         id="google-analytics-init"
         dangerouslySetInnerHTML={{
           __html: `window.dataLayer = window.dataLayer || [];
-            window.gtag = window.gtag || function(...args) { window.dataLayer.push(args); };
+            window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
             window.gtag('js', new Date());
             window.gtag('config', ${JSON.stringify(measurementId)});`,
         }}
