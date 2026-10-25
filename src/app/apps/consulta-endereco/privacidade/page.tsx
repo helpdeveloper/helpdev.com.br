@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-const updatedAt = '15 de outubro de 2026';
+const updatedAt = '25 de outubro de 2026';
 
 export default function ConsultaEnderecoPrivacyPolicyPage() {
   return (
@@ -32,7 +32,9 @@ export default function ConsultaEnderecoPrivacyPolicyPage() {
             <p>
               Esta política se aplica ao aplicativo Consulta Endereço para Android, publicado com o identificador{' '}
               <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.consultaendereco</code>. O app não exige
-              criação de conta e não oferece compras ou assinaturas dentro do aplicativo.
+              criação de conta e não oferece compras ou assinaturas dentro do aplicativo. O Consulta Endereço é um
+              aplicativo independente e não representa, não é afiliado nem é operado pelo Governo do Brasil, pelos
+              Correios ou por qualquer outra entidade governamental.
             </p>
           </section>
 
@@ -40,7 +42,7 @@ export default function ConsultaEnderecoPrivacyPolicyPage() {
             <h2 className="mb-3 text-xl font-semibold text-gray-900">Consultas de endereços e CEPs</h2>
             <p>
               Quando você pesquisa um endereço por nome ou informa um CEP, o app envia o termo pesquisado ao serviço de
-              geocodificação disponibilizado pelo Android ou consulta os serviços públicos ViaCEP e BrasilAPI para
+              geocodificação disponibilizado pelo Android ou consulta os serviços independentes ViaCEP e BrasilAPI para
               obter os dados de endereço. A BrasilAPI pode ser consultada como alternativa quando o ViaCEP não retorna
               um endereço válido ou está indisponível. Esses serviços recebem a consulta e dados técnicos da conexão,
               como o endereço IP, e tratam as informações conforme suas próprias políticas e condições.
@@ -49,7 +51,8 @@ export default function ConsultaEnderecoPrivacyPolicyPage() {
               As consultas não são enviadas a um servidor próprio da Help DEV. Consulte as políticas dos serviços
               externos para saber como eles tratam dados de acesso e requisições: <a className="text-blue-700 underline hover:text-blue-900" href="https://viacep.com.br/">ViaCEP</a>,{' '}
               <a className="text-blue-700 underline hover:text-blue-900" href="https://brasilapi.com.br/">BrasilAPI</a>{' '}
-              e os serviços Google associados ao Android e ao Maps.
+              e os serviços Google associados ao Android e ao Maps. A fonte oficial de referência para CEP é o{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://buscacepinter.correios.com.br/app/cep/index.php">Busca CEP dos Correios</a>.
             </p>
           </section>
 
