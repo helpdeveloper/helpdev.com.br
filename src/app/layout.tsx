@@ -75,8 +75,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className} suppressHydrationWarning>
+      <head>
         <GoogleAnalytics />
+      </head>
+      <body className={inter.className} suppressHydrationWarning>
         <Script id="ld-organization" type="application/ld+json" strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
             '@context': 'https://schema.org',
