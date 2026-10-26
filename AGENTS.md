@@ -27,6 +27,15 @@
 - Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`, `refactor:`). Example: `feat(services): add static contact form`.
 - PRs: clear description, linked issues, screenshots for UI, and confirm `npm run lint`/`build` pass.
 
+## Release & Production Deploy
+- Validate site changes with `npm run build` before merging.
+- Merge the reviewed change into `main`; deploy tags must point to a commit already merged into `main`.
+- Before tagging, fetch `origin` and confirm the intended commit is contained in `origin/main`.
+- Use the next patch version from the latest `v*` semantic version tag (for example, `v1.3.17` becomes `v1.3.18` for a patch release).
+- Create an annotated `vX.Y.Z` tag on the merged `main` commit and push it with `git push origin vX.Y.Z`.
+- Pushing a `v*` tag starts `.github/workflows/deploy.yml`, which builds and deploys the static site to production. Check the workflow run succeeds and verify the live page after deployment.
+- Never tag an unmerged feature branch or reuse an existing release tag.
+
 ## SEO & Content
 - Global SEO in `src/app/layout.tsx` (Open Graph, Twitter, JSON-LD). Per-page metadata in `src/app/**/metadata.ts`.
 - Keep a single H1 por página; use descrições objetivas e CTAs claros.

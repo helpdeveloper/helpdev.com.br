@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-const updatedAt = '17 de outubro de 2026';
+const updatedAt = '26 de outubro de 2026';
 
 export default function VelocimetroAlertaPrivacyPolicyPage() {
   return (
@@ -125,9 +125,30 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
           <section>
             <h2 className="mb-3 text-xl font-semibold text-gray-900">Anúncios, análise e identificadores</h2>
             <p>
-              O Velocímetro Alerta não exibe anúncios, não integra SDKs de publicidade ou atribuição e não usa o ID de
-              publicidade do Android. O app não envia dados de atividade à Help DEV para análise, publicidade ou
-              criação de perfis. A coleta do Maps SDK é descrita na seção sobre mapas.
+              O app exibe um anúncio intersticial ao abrir Minhas atividades e um banner na parte inferior da tela
+              Configurações. Para fornecer esses anúncios, o Google Mobile Ads SDK coleta e compartilha
+              automaticamente dados como endereço IP (que pode estimar a região geral do aparelho), interações com o
+              app e anúncios, informações de diagnóstico e desempenho e identificadores do aparelho ou da conta,
+              incluindo o ID de publicidade do Android e o App Set ID quando disponíveis. O ID de publicidade pode ser
+              redefinido ou excluído nas configurações de privacidade do Android. Os dados do SDK são criptografados em
+              trânsito usando TLS.
+            </p>
+            <p className="mt-3">
+              O Google e os parceiros de publicidade podem processar esses dados para exibir e medir anúncios,
+              analisar o desempenho e prevenir fraude. A personalização depende das escolhas de consentimento quando
+              exigidas, das configurações disponíveis e das leis aplicáveis. O app usa o SDK Google User Messaging
+              Platform (UMP) para atualizar o status de consentimento no início do uso e apresentar as opções
+              necessárias; quando uma opção de privacidade for exigida, ela estará disponível em Configurações. O
+              código do app não inclui coordenadas, percursos salvos ou valores de sensores Bluetooth nos pedidos de
+              anúncios. A Help DEV não recebe esses dados brutos em servidores próprios; o Google os processa conforme
+              sua{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://policies.google.com/privacy?hl=pt-BR">
+                Política de Privacidade
+              </a>{' '}
+              e a documentação sobre{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://developers.google.com/admob/android/privacy/play-data-disclosure">
+                dados coletados pelo SDK de anúncios
+              </a>.
             </p>
           </section>
 
@@ -135,18 +156,19 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             <h2 className="mb-3 text-xl font-semibold text-gray-900">Público</h2>
             <p>
               O público declarado para o app na Google Play é formado por adolescentes de 13 a 17 anos e adultos. O app
-              não foi desenvolvido para crianças menores de 13 anos. O app não contém anúncios nem usa dados de
-              atividade para publicidade.
+              não foi desenvolvido para crianças menores de 13 anos. O app limita a classificação máxima do conteúdo
+              dos anúncios a T. Os dados de localização e os valores dos sensores não são incluídos nos pedidos de
+              anúncios.
             </p>
           </section>
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-gray-900">Retenção e exclusão</h2>
             <p>
-              As preferências permanecem no armazenamento local até você limpar os dados do app nas configurações do
-              Android ou desinstalá-lo. Dados de uma atividade que não foram exportados não são mantidos em um
-              histórico remoto da Help DEV. Arquivos GPX exportados e cópias em backups devem ser excluídos por você
-              no serviço ou dispositivo em que foram salvos, conforme as opções desse destino.
+              As preferências, atividades salvas e rotas permanecem no dispositivo até você excluí-las em Minhas
+              atividades, limpar os dados do app nas configurações do Android ou desinstalá-lo. A Help DEV não mantém
+              um histórico remoto dessas atividades. Arquivos GPX exportados e cópias em backups devem ser excluídos
+              por você no serviço ou dispositivo em que foram salvos, conforme as opções desse destino.
             </p>
           </section>
 
@@ -256,9 +278,28 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
           <section>
             <h3 className="mb-3 text-xl font-semibold text-gray-900">Ads, analytics, and identifiers</h3>
             <p>
-              Velocímetro Alerta does not show ads, integrate advertising or attribution SDKs, or use the Android
-              Advertising ID. The app does not send activity data to Help DEV for analytics, advertising, or profiling.
-              Maps SDK collection is described in the maps section above.
+              The app displays an interstitial ad when you open My activities and a banner at the bottom of Settings.
+              To provide these ads, the Google Mobile Ads SDK automatically collects and shares data such as IP address
+              (which may estimate a device&apos;s general location), app and ad interactions, diagnostic and performance
+              information, and device or account identifiers, including the Android Advertising ID and App Set ID when
+              available. You can reset or delete the Advertising ID in Android privacy settings. SDK data is encrypted
+              in transit using TLS.
+            </p>
+            <p className="mt-3">
+              Google and advertising partners may process this data to serve and measure ads, analyze performance, and
+              prevent fraud. Personalization depends on consent choices where required, available settings, and
+              applicable law. The app uses the Google User Messaging Platform (UMP) SDK to update consent status at
+              startup and present required choices; when a privacy-options entry point is required, it is available in
+              Settings. The app&apos;s code does not include GPS coordinates, saved routes, or Bluetooth sensor values in
+              ad requests. Help DEV does not receive this raw SDK data on its own servers. Google processes it under
+              its{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://policies.google.com/privacy?hl=en">
+                Privacy Policy
+              </a>{' '}
+              and its documentation about{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://developers.google.com/admob/android/privacy/play-data-disclosure">
+                data collected by the ads SDK
+              </a>.
             </p>
           </section>
 
@@ -266,17 +307,17 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             <h3 className="mb-3 text-xl font-semibold text-gray-900">Audience</h3>
             <p>
               The declared Google Play audience is teens aged 13–17 and adults. The app is not designed for children
-              under 13. It contains no ads and does not use activity data for advertising.
+              under 13. The maximum ad content rating is T. Location and sensor values are not included in ad requests.
             </p>
           </section>
 
           <section>
             <h3 className="mb-3 text-xl font-semibold text-gray-900">Retention and deletion</h3>
             <p>
-              Preferences remain in local app storage until you clear the app&apos;s data in Android settings or uninstall
-              the app. Activity data that you have not exported is not kept in a remote Help DEV history. You are
-              responsible for deleting exported GPX files and backup copies from the service or device where they were
-              saved, using that destination&apos;s available options.
+              Preferences, saved activities, and routes remain on your device until you delete them in My activities,
+              clear the app&apos;s data in Android settings, or uninstall the app. Help DEV does not keep a remote history
+              of these activities. You are responsible for deleting exported GPX files and backup copies from the
+              service or device where they were saved, using that destination&apos;s available options.
             </p>
           </section>
 
