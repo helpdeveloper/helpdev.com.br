@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "br.com.helpdev.velocimetroalerta.v2",
+      "sha256_cert_fingerprints": [
+        "FE:0E:92:C0:E8:6B:9F:7E:62:90:58:49:D6:33:33:24:E8:29:F6:88:44:F4:35:3C:D4:99:6A:6B:7D:94:95:B6"
+      ]
+    }
+  }
+]

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-const updatedAt = '26 de outubro de 2026';
+const updatedAt = '27 de outubro de 2026';
 
 export default function VelocimetroAlertaPrivacyPolicyPage() {
   return (
@@ -36,7 +36,8 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             <p>
               Esta política se aplica ao aplicativo gratuito Velocímetro Alerta para Android, publicado com o
               identificador <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.velocimetroalerta.v2</code>.
-              O aplicativo não exige criação de conta e não oferece compras ou assinaturas dentro do app.
+              Os recursos locais podem ser usados sem conta. Uma conta Google é necessária para sincronizar algumas
+              preferências ou conectar o Strava. O aplicativo não oferece compras ou assinaturas dentro do app.
             </p>
           </section>
 
@@ -50,9 +51,9 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             </p>
             <p className="mt-3">
               A localização e as métricas da atividade são processadas no dispositivo. A Help DEV não recebe esses
-              dados em seus servidores, não mantém uma conta de usuário para o app e o app não mantém um histórico
-              remoto das atividades. Os dados enviados ao Google Maps SDK ao exibir um mapa estão descritos na seção
-              abaixo. A permissão de localização é necessária para os recursos de velocidade e
+              dados no Firebase. Se você optar por enviar uma atividade ao Strava, os dados do arquivo GPX seguem
+              diretamente do aparelho para o Strava, conforme descrito abaixo. Os dados enviados ao Google Maps SDK ao
+              exibir um mapa estão descritos na seção abaixo. A permissão de localização é necessária para os recursos de velocidade e
               rastreamento; você pode recusá-la ou revogá-la nas configurações do Android, mas esses recursos podem
               deixar de funcionar.
             </p>
@@ -93,16 +94,31 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-xl font-semibold text-gray-900">Preferências e armazenamento</h2>
+            <h2 className="mb-3 text-xl font-semibold text-gray-900">Conta Google, Firebase e preferências</h2>
             <p>
-              Preferências do app, como limites de velocidade, alertas, sensores configurados e zonas de frequência
-              cardíaca, ficam no armazenamento local do aplicativo. Conforme as configurações do aparelho e da conta,
-              o Android pode incluir dados locais do app em um backup ou transferi-los para outro dispositivo. Esses
-              backups são administrados pelo Android e pelo serviço de backup escolhido; a Help DEV não os controla.
+              O login Google é opcional para o uso local e necessário para sincronizar preferências e conectar o
+              Strava. Quando você entra, o Firebase Authentication processa identificadores da conta e informações de
+              perfil disponibilizadas pelo Google, como nome e e-mail. O Firebase Authentication opera em centros de
+              dados nos Estados Unidos. O Google trata esses dados conforme sua{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://policies.google.com/privacy?hl=pt-BR">
+                Política de Privacidade
+              </a>.
             </p>
             <p className="mt-3">
-              O app não envia automaticamente localização, métricas de atividade ou preferências para um servidor e não
-              mantém um serviço próprio de histórico de atividades.
+              Se você escolher sincronizar, um conjunto limitado de preferências — incluindo opções de alertas,
+              intervalos, zonas de frequência cardíaca e a opção de sincronização automática — fica associado à sua
+              conta no Cloud Firestore do Firebase. O banco e as Cloud Functions do projeto estão configurados na
+              região de São Paulo; outros dados de serviço do Firebase podem ser processados pela infraestrutura global
+              do Google. As atividades salvas, arquivos GPX e estados de envio continuam no aparelho e não são enviados
+              ao Firebase. Mais informações estão na página de{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://firebase.google.com/support/privacy">
+                privacidade e segurança do Firebase
+              </a>.
+            </p>
+            <p className="mt-3">
+              Preferências e atividades locais permanecem no armazenamento do aplicativo. Conforme as configurações do
+              aparelho e da conta, o Android pode incluí-las em um backup ou transferi-las para outro dispositivo; esses
+              backups são administrados pelo Android e pelo serviço de backup escolhido.
             </p>
           </section>
 
@@ -119,6 +135,28 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
               Depois de exportado, o arquivo fica sob seu controle e pode conter dados precisos sobre o trajeto e a
               atividade. O destino escolhido passa a tratar o arquivo conforme os próprios termos e práticas de
               privacidade. Exclua a cópia no local de destino se não quiser mantê-la.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="mb-3 text-xl font-semibold text-gray-900">Conexão e envio de atividades ao Strava</h2>
+            <p>
+              Para conectar uma conta, você autoriza o Strava pelo navegador com a permissão de criar atividades
+              (<code>activity:write</code>). O código temporário de autorização é processado pelas Cloud Functions; os
+              tokens de acesso e renovação ficam no Firestore em um registro privado da sua conta. Quando a integração
+              estiver ativa, o segredo do aplicativo Strava fica no Google Secret Manager. Para enviar uma atividade, a função devolve ao aparelho
+              um token de acesso de curta duração, usado para enviar o GPX diretamente à API do Strava. A Help DEV não
+              recebe o arquivo GPX nem as coordenadas da atividade pelo Firebase.
+            </p>
+            <p className="mt-3">
+              O envio manual transmite a atividade escolhida nos detalhes. Se você ativar <strong>Sincronizar
+              automático</strong>, atividades elegíveis salvas depois dessa escolha podem ser enviadas automaticamente;
+              atividades antigas não são enviadas em lote. O GPX pode conter trajeto, coordenadas, horários, elevação e,
+              quando disponíveis, frequência cardíaca, cadência, temperatura e umidade. O app também envia o nome, o
+              tipo e um identificador do arquivo. O Strava processa e armazena esses dados de acordo com a{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://www.strava.com/legal/privacy?hl=pt-BR">
+                Política de Privacidade do Strava
+              </a>.
             </p>
           </section>
 
@@ -162,13 +200,27 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             </p>
           </section>
 
-          <section>
-            <h2 className="mb-3 text-xl font-semibold text-gray-900">Retenção e exclusão</h2>
+          <section id="exclusao-conta">
+            <h2 className="mb-3 text-xl font-semibold text-gray-900">Retenção e exclusão de dados</h2>
             <p>
               As preferências, atividades salvas e rotas permanecem no dispositivo até você excluí-las em Minhas
-              atividades, limpar os dados do app nas configurações do Android ou desinstalá-lo. A Help DEV não mantém
-              um histórico remoto dessas atividades. Arquivos GPX exportados e cópias em backups devem ser excluídos
-              por você no serviço ou dispositivo em que foram salvos, conforme as opções desse destino.
+              atividades, limpar os dados do app nas configurações do Android ou desinstalá-lo. Preferências sincronizadas
+              ficam no Firestore enquanto o registro da conta existir; sair da conta Google no app não as exclui.
+              Quando a desconexão do Strava é concluída pelo app, a autorização é revogada e os tokens armazenados são
+              removidos. Atividades já enviadas ficam na conta Strava e devem ser excluídas por você diretamente no
+              Strava. Arquivos GPX exportados e cópias em backups devem ser excluídos no serviço ou dispositivo onde
+              foram salvos.
+            </p>
+            <p className="mt-3">
+              Para solicitar a exclusão da conta Firebase usada pelo aplicativo, das preferências na nuvem e dos tokens
+              Strava associados, use o{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="mailto:gbzarelli@gmail.com?subject=Exclus%C3%A3o%20de%20conta%20-%20Veloc%C3%ADmetro%20Alerta">
+                e-mail de suporte da Help DEV
+              </a>{' '}
+              e informe o e-mail da conta Google usada no app. A solicitação remove a autorização e os tokens Strava
+              armazenados, mas não remove atividades já enviadas à sua conta
+              Strava nem os arquivos GPX que continuam no dispositivo; esses itens devem ser removidos nos respectivos
+              serviços ou no app.
             </p>
           </section>
 
@@ -193,7 +245,8 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             <p>
               This policy applies to the free Velocímetro Alerta Android app, package
               <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.velocimetroalerta.v2</code>.
-              The app does not require an account and does not offer in-app purchases or subscriptions.
+              Local features can be used without an account. A Google account is required to sync some preferences or
+              connect Strava. The app does not offer in-app purchases or subscriptions.
             </p>
           </section>
 
@@ -206,11 +259,11 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
               settings. The app does not start tracking automatically.
             </p>
             <p className="mt-3">
-              Location and activity metrics are processed on your device. Help DEV does not receive this data on its
-              servers, the app does not require a user account, and the app does not keep a remote activity history.
-              Data sent to the Google Maps SDK when a map is shown is described below. Location access is required for
-              speed and tracking features; you can deny or revoke it in Android settings, but those features may stop
-              working.
+              Location and activity metrics are processed on your device. Help DEV does not receive them through
+              Firebase. If you choose to send an activity to Strava, the GPX file goes directly from your device to
+              Strava, as described below. Data sent to the Google Maps SDK when a map is shown is described below.
+              Location access is required for speed and tracking features; you can deny or revoke it in Android
+              settings, but those features may stop working.
             </p>
           </section>
 
@@ -247,16 +300,30 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
           </section>
 
           <section>
-            <h3 className="mb-3 text-xl font-semibold text-gray-900">Preferences and storage</h3>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Google account, Firebase, and preferences</h3>
             <p>
-              App preferences, including speed limits, alerts, configured sensors, and heart-rate zones, are stored
-              locally by the app. Depending on your device and account settings, Android may include local app data in a
-              backup or transfer it to another device. Android and the backup service you choose manage those backups;
-              Help DEV does not control them.
+              Google sign-in is optional for local use and required to sync preferences and connect Strava. When you
+              sign in, Firebase Authentication processes account identifiers and profile information made available by
+              Google, such as your name and email address. Firebase Authentication operates from data centers in the
+              United States. Google handles this data under its{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://policies.google.com/privacy?hl=en">
+                Privacy Policy
+              </a>.
             </p>
             <p className="mt-3">
-              The app does not automatically send location, activity metrics, or preferences to a server and does not
-              maintain its own remote activity-history service.
+              If you choose to sync, a limited set of preferences — including alert options, intervals, heart-rate
+              zones, and the automatic-sync setting — is associated with your account in Firebase Cloud Firestore. The
+              database and Cloud Functions are configured in the São Paulo region; other Firebase service data may be
+              processed across Google’s global infrastructure. Saved activities, GPX files, and upload statuses remain
+              on your device and are not sent to Firebase. See Firebase’s{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://firebase.google.com/support/privacy">
+                privacy and security information
+              </a>.
+            </p>
+            <p className="mt-3">
+              Preferences and activities remain in the app’s local storage. Depending on your device and account
+              settings, Android may include them in a backup or transfer them to another device; Android and the backup
+              service you choose manage those backups.
             </p>
           </section>
 
@@ -272,6 +339,28 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
               After export, the file is under your control and may contain precise route and activity information. The
               destination you choose handles the file under its own privacy terms and practices. Delete the copy from
               that destination if you no longer want to keep it.
+            </p>
+          </section>
+
+          <section>
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Strava connection and activity uploads</h3>
+            <p>
+              To connect an account, you authorize Strava in a browser with permission to create activities
+              (<code>activity:write</code>). Cloud Functions process the temporary authorization code; access and
+              refresh tokens are stored in a private Firestore record for your account. When the integration is active,
+              the Strava application secret is held in Google Secret Manager. When an activity is sent, a function returns a short-lived access token
+              to the device, which uploads the GPX directly to Strava’s API. Help DEV does not receive the GPX file or
+              activity coordinates through Firebase.
+            </p>
+            <p className="mt-3">
+              A manual upload sends the activity selected in its details. If you turn on <strong>Automatic sync</strong>,
+              eligible activities saved after you opt in may be uploaded automatically; existing activities are not
+              uploaded in a batch. A GPX file may contain the route, coordinates, timestamps, elevation, and, when
+              available, heart rate, cadence, temperature, and humidity. The app also sends the activity name, type, and
+              a file identifier. Strava processes and stores this data under its{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://www.strava.com/legal/privacy?hl=en-US">
+                Privacy Policy
+              </a>.
             </p>
           </section>
 
@@ -311,13 +400,26 @@ export default function VelocimetroAlertaPrivacyPolicyPage() {
             </p>
           </section>
 
-          <section>
-            <h3 className="mb-3 text-xl font-semibold text-gray-900">Retention and deletion</h3>
+          <section id="account-deletion">
+            <h3 className="mb-3 text-xl font-semibold text-gray-900">Data retention and deletion</h3>
             <p>
               Preferences, saved activities, and routes remain on your device until you delete them in My activities,
-              clear the app&apos;s data in Android settings, or uninstall the app. Help DEV does not keep a remote history
-              of these activities. You are responsible for deleting exported GPX files and backup copies from the
-              service or device where they were saved, using that destination&apos;s available options.
+              clear the app&apos;s data in Android settings, or uninstall the app. Synced preferences remain in Firestore
+              while the account record exists; signing out of Google in the app does not delete them. When you
+              disconnect Strava in the app, its authorization is revoked and stored tokens are removed. Activities
+              already uploaded remain in your Strava account and must be deleted there. Delete exported GPX files and
+              backup copies in the service or device where they were saved.
+            </p>
+            <p className="mt-3">
+              To request deletion of the Firebase account used by the app, its cloud preferences, and associated Strava
+              tokens, use Help DEV&apos;s{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="mailto:gbzarelli@gmail.com?subject=Account%20deletion%20-%20Veloc%C3%ADmetro%20Alerta">
+                support email
+              </a>{' '}
+              and include the email address of the Google account used in the app. The request removes the stored Strava
+              authorization and tokens, but it does not remove
+              activities already uploaded to your Strava account or GPX files that remain on your device; remove those
+              items in their respective services or in the app.
             </p>
           </section>
 
