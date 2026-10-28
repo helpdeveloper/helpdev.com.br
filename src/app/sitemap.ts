@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/articles',
     '/projects',
     '/blog',
+    '/privacidade',
   ];
 
   return routes.map((route) => ({
