@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-const updatedAt = '25 de outubro de 2026';
+const updatedAt = '28 de outubro de 2026';
 
 export default function ConsultaEnderecoPrivacyPolicyPage() {
   return (
@@ -33,8 +33,9 @@ export default function ConsultaEnderecoPrivacyPolicyPage() {
               Esta política se aplica ao aplicativo Consulta Endereço para Android, publicado com o identificador{' '}
               <code className="break-all rounded bg-gray-100 px-1">br.com.helpdev.consultaendereco</code>. O app não exige
               criação de conta e não oferece compras ou assinaturas dentro do aplicativo. O Consulta Endereço é um
-              aplicativo independente e não representa, não é afiliado nem é operado pelo Governo do Brasil, pelos
-              Correios ou por qualquer outra entidade governamental.
+              aplicativo privado e independente, desenvolvido pela Help DEV. Ele não representa, não é afiliado,
+              autorizado, patrocinado, endossado nem operado pelo Governo do Brasil, pelos Correios, pelo Ministério
+              das Comunicações ou por qualquer entidade pública.
             </p>
           </section>
 
@@ -51,8 +52,14 @@ export default function ConsultaEnderecoPrivacyPolicyPage() {
               As consultas não são enviadas a um servidor próprio da Help DEV. Consulte as políticas dos serviços
               externos para saber como eles tratam dados de acesso e requisições: <a className="text-blue-700 underline hover:text-blue-900" href="https://viacep.com.br/">ViaCEP</a>,{' '}
               <a className="text-blue-700 underline hover:text-blue-900" href="https://brasilapi.com.br/">BrasilAPI</a>{' '}
-              e os serviços Google associados ao Android e ao Maps. A fonte oficial de referência para CEP é o{' '}
-              <a className="text-blue-700 underline hover:text-blue-900" href="https://buscacepinter.correios.com.br/app/cep/index.php">Busca CEP dos Correios</a>.
+              e os serviços Google associados ao Android e ao Maps.
+            </p>
+            <p className="mt-3">
+              <strong>Fontes oficiais e aviso de independência.</strong> O app não é uma fonte oficial de informações
+              governamentais. Para conferir um CEP ou endereço, use diretamente o{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://buscacepinter.correios.com.br/app/endereco/index.php">Busca CEP dos Correios</a>.
+              Como referência institucional sobre essa ferramenta, consulte também o{' '}
+              <a className="text-blue-700 underline hover:text-blue-900" href="https://www.gov.br/mcom/pt-br/acesso-a-informacao/dicionario.pdf">Ministério das Comunicações</a>.
             </p>
           </section>
 
