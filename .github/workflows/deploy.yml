@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: deploy
+    env:
+      NEXT_PUBLIC_ADSENSE_CLIENT_ID: ${{ vars.NEXT_PUBLIC_ADSENSE_CLIENT_ID }}
+      NEXT_PUBLIC_ADSENSE_SLOT_ID: ${{ vars.NEXT_PUBLIC_ADSENSE_SLOT_ID }}
 
     steps:
       - name: Checkout code

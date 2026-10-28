@@ -26,6 +26,7 @@ export const Footer: React.FC = () => {
                 <li><Link href="/projects" className="text-gray-400 hover:text-white transition-colors">Projetos</Link></li>
                 <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</Link></li>
                 <li><Link href="/#contato" className="text-gray-400 hover:text-white transition-colors">Contato</Link></li>
+                <li><Link href="/privacidade" className="text-gray-400 hover:text-white transition-colors">Privacidade</Link></li>
               </ul>
             </div>
             

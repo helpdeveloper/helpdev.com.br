@@ -3,10 +3,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import AdSenseBanner from "./components/AdSenseBanner";
 import Script from "next/script";
 import { serviceOfferings } from "@/data/services";
 
 const inter = Inter({ subsets: ["latin"] });
+const adsensePublisherId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
 
 export const metadata: Metadata = {
   title: {
@@ -77,6 +79,15 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <GoogleAnalytics />
+        {adsensePublisherId && (
+          <Script
+            id="google-adsense"
+            async
+            crossOrigin="anonymous"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsensePublisherId}`}
+            strategy="beforeInteractive"
+          />
+        )}
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <Script id="ld-organization" type="application/ld+json" strategy="afterInteractive"
@@ -124,6 +135,7 @@ export default function RootLayout({
           }) }}
         />
         {children}
+        <AdSenseBanner />
         <Footer />
       </body>
     </html>
