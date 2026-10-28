@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 declare global {
   interface Window {
@@ -13,16 +13,35 @@ const slotId = process.env.NEXT_PUBLIC_ADSENSE_SLOT_ID;
 
 export default function AdSenseBanner() {
   const initialized = useRef(false);
+  const adElement = useRef<HTMLModElement | null>(null);
+  const [unfilled, setUnfilled] = useState(false);
   const enabled = Boolean(publisherId && slotId);
 
   useEffect(() => {
-    if (!enabled || initialized.current) return;
+    if (!enabled) return;
 
-    initialized.current = true;
-    (window.adsbygoogle ||= []).push({});
+    const element = adElement.current;
+    if (!element) return;
+
+    const observer = new MutationObserver(() => {
+      setUnfilled(element.getAttribute('data-ad-status') === 'unfilled');
+    });
+    observer.observe(element, {
+      attributes: true,
+      attributeFilter: ['data-ad-status'],
+    });
+
+    setUnfilled(element.getAttribute('data-ad-status') === 'unfilled');
+
+    if (!initialized.current) {
+      initialized.current = true;
+      (window.adsbygoogle ||= []).push({});
+    }
+
+    return () => observer.disconnect();
   }, [enabled]);
 
-  if (!enabled) {
+  if (!enabled || unfilled) {
     return null;
   }
 
@@ -36,6 +55,7 @@ export default function AdSenseBanner() {
           Anúncio
         </p>
         <ins
+          ref={adElement}
           className="adsbygoogle block min-h-[90px] w-full"
           style={{ display: 'block' }}
           data-ad-client={publisherId}

@@ -39,3 +39,9 @@ Create a reusable client component that renders only when both `NEXT_PUBLIC_ADSE
 - When configured, the slot appears after route content and before the footer.
 - It is responsive and does not stick to or cover the viewport.
 - The production build succeeds.
+
+## Delivery readiness follow-up
+
+- Publish the AdSense seller declaration at `/ads.txt` using the existing HelpDev publisher ID.
+- Hide the complete banner container after AdSense marks its slot `data-ad-status="unfilled"`; a blank placeholder should not remain visible when Google has no ad to serve.
+- These changes do not bypass AdSense account setup or site review.
