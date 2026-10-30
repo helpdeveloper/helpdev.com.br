@@ -30,13 +30,12 @@ export const portfolioApps: PortfolioApp[] = [
     storeUrl: 'https://play.google.com/store/apps/details?id=br.com.helpdev.minhareforma',
   },
   {
-    kind: 'published',
-    id: 'atendflow',
-    name: 'AtendFlow',
-    description: 'Organize clientes, agendamentos e cobranças em um só lugar.',
-    promotionalImage: '/images/apps/atendflow-promotional.png',
-    icon: '/images/apps/atendflow-icon.png',
-    storeUrl: 'https://play.google.com/store/apps/details?id=com.helpdev.atendflow',
+    kind: 'coming-soon',
+    id: 'cuidaz',
+    name: 'CuidaZ',
+    description: 'Organize pacientes, agenda, atendimentos, evoluções clínicas e recebimentos.',
+    logo: '/images/apps/cuidaz-logo.png',
+    statusLabel: 'Em Breve',
   },
   {
     kind: 'published',
@@ -73,13 +72,5 @@ export const portfolioApps: PortfolioApp[] = [
     promotionalImage: '/images/apps/cronometro-natacao-promotional.png',
     icon: '/images/apps/cronometro-natacao-icon.png',
     storeUrl: 'https://play.google.com/store/apps/details?id=br.com.helpdev.lapscounter.swimming',
-  },
-  {
-    kind: 'coming-soon',
-    id: 'cuidaz',
-    name: 'CuidaZ',
-    description: 'Organize pacientes, agenda, atendimentos, evoluções clínicas e recebimentos.',
-    logo: '/images/apps/cuidaz-logo.png',
-    statusLabel: 'Em Breve',
   },
 ];
