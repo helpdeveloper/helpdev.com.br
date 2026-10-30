@@ -6,7 +6,7 @@ import { portfolioApps } from '@/data/apps';
 export const metadata: Metadata = {
   title: 'Aplicativos',
   description: 'Conheça os aplicativos da Help DEV para organização, mobilidade e esporte, além do próximo lançamento CuidaZ.',
-  keywords: ['aplicativos', 'Google Play', 'Help DEV', 'Minha Obra', 'AtendFlow', 'Velocímetro Alerta', 'CuidaZ'],
+  keywords: ['aplicativos', 'Google Play', 'Help DEV', 'Minha Obra', 'Velocímetro Alerta', 'CuidaZ'],
   authors: [{ name: 'Guilherme Biff Zarelli' }],
   alternates: { canonical: '/apps' },
   openGraph: {
