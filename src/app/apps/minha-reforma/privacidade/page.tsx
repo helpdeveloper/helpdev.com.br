@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-const updatedAt = '22 de outubro de 2026';
+const updatedAt = '4 de novembro de 2026';
 
 export default function MinhaObraPrivacyPolicyPage() {
   return (
@@ -66,11 +66,12 @@ export default function MinhaObraPrivacyPolicyPage() {
             <p className="mt-3">
               A Help DEV não recebe automaticamente os cadastros da obra, não
               mantém uma cópia em servidor próprio e não oferece sincronização
-              ou backup em nuvem nesta versão. O app não solicita dados
-              bancários, números de cartão ou credenciais financeiras e não
-              realiza pagamentos a fornecedores. Fora do SDK de anúncios, o
-              app não integra ferramentas próprias de análise de uso ou envio
-              de relatórios de falha.
+              ou backup em nuvem. O backup manual da versão Pro é gerado como
+              arquivo no aparelho; veja abaixo como ele é compartilhado. O app
+              não solicita dados bancários, números de cartão ou credenciais
+              financeiras e não realiza pagamentos a fornecedores. Fora do SDK
+              de anúncios, o app não integra ferramentas próprias de análise
+              de uso ou envio de relatórios de falha.
             </p>
             <p className="mt-3">
               O sistema operacional ou um serviço de backup configurado no
@@ -162,9 +163,11 @@ export default function MinhaObraPrivacyPolicyPage() {
             </h2>
             <p>
               A compra única do Minha Obra Pro remove os anúncios e libera a
-              exportação de relatórios em PDF e CSV. A compra e a restauração são
-              processadas pela Google Play ou pela Apple App Store, conforme o
-              aparelho, e seguem os termos e práticas de privacidade da loja.
+              exportação de relatórios em PDF e CSV, além da criação e
+              restauração manual de backups das obras. A compra e a restauração
+              são processadas pela Google Play ou pela Apple App Store,
+              conforme o aparelho, e seguem os termos e práticas de privacidade
+              da loja.
               O app recebe o resultado necessário para liberar o Pro e mantém
               localmente uma indicação desse acesso; não recebe os dados do
               cartão ou da forma de pagamento usados na loja. A restauração é
@@ -174,17 +177,21 @@ export default function MinhaObraPrivacyPolicyPage() {
 
           <section>
             <h2 className="mb-3 text-xl font-semibold text-gray-900">
-              Relatórios e compartilhamento
+              Relatórios, backups e compartilhamento
             </h2>
             <p>
-              Os relatórios Pro em PDF e CSV são gerados no aparelho a partir
-              dos dados locais da obra. Se você escolher exportar ou
-              compartilhar um arquivo, o sistema operacional mostrará os
-              destinos disponíveis e o arquivo será entregue ao aplicativo ou
-              serviço que você selecionar. O destino escolhido poderá tratar e
-              armazenar o relatório conforme os próprios termos e práticas de
-              privacidade. A Help DEV não recebe automaticamente uma cópia dos
-              arquivos exportados.
+              Os relatórios Pro em PDF e CSV e o backup Pro em JSON são gerados
+              no aparelho a partir dos dados locais. O backup inclui as obras e
+              seus registros, como locais, orçamentos, categorias, etapas,
+              compras, despesas, pagamentos agendados, descrições e nomes de
+              fornecedores. O arquivo de backup não é criptografado. A criação
+              e a restauração são manuais: para criar o arquivo, você escolhe
+              um destino no compartilhamento do sistema; para restaurar, você
+              seleciona um arquivo e confirma a substituição dos dados locais
+              após a validação. O destino escolhido para compartilhar o arquivo
+              poderá recebê-lo, armazená-lo e tratá-lo conforme os próprios
+              termos e práticas de privacidade. A Help DEV não recebe nem
+              mantém automaticamente uma cópia dos arquivos compartilhados.
             </p>
           </section>
 
@@ -198,8 +205,9 @@ export default function MinhaObraPrivacyPolicyPage() {
               aplicativo. Registros ocultados ou removidos da visualização
               podem continuar no banco local da instalação. Limpar os dados do
               app ou desinstalá-lo não remove cópias que já estejam em backups
-              do sistema, relatórios PDF ou CSV exportados ou serviços de terceiros;
-              gerencie essas cópias no aparelho ou no destino correspondente.
+              do sistema, relatórios PDF ou CSV e backups JSON compartilhados,
+              ou em serviços de terceiros; gerencie essas cópias no aparelho
+              ou no destino correspondente.
               Apagar os dados locais também pode remover a indicação local do
               Pro; compras elegíveis podem ser restauradas pela loja usada para
               comprar.
