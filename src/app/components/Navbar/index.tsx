@@ -86,7 +86,7 @@ export const Navbar = React.memo(() => {
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                 }`}
               >
-                Blog/Gists
+                Notas técnicas
               </Link>
               <Link
                 href="/about"
@@ -205,7 +205,7 @@ export const Navbar = React.memo(() => {
             }`}
             onClick={closeMenu}
           >
-            Blog/Gists
+            Notas técnicas
           </Link>
           <Link
             href="/about"

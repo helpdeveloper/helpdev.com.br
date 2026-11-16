@@ -1,273 +1,85 @@
 'use client';
 
-import { BlogCard } from '../components/BlogCard';
+import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { SearchBar } from '../components/SearchBar';
-import { useEffect, useState, useMemo, useCallback } from 'react';
-
-interface Gist {
-  id: string;
-  description: string;
-  created_at: string;
-  html_url: string;
-  files: {
-    [key: string]: {
-      filename: string;
-      language: string;
-      raw_url: string;
-      content?: string;
-    }
-  }
-  cleanTitle: string;
-  cleanDescription: string;
-  imageUrl: string;
-  tags: string[];
-}
-
-const technologyKeywords = [
-  'aws', 'sns', 'sqs', 's3', 'lambda', 'architecture', 'arquitetura', 'clean', 'design', 'adr',
-  'java', 'spring', 'jvm', 'performance', 'rabbitmq', 'kafka', 'message', 'mensageria',
-  'go', 'golang', 'cloud', 'docker', 'kubernetes', 'test', 'teste', 'quality', 'qualidade',
-  'code', 'código', 'desenvolvimento', 'api', 'rest', 'graphql', 'security', 'segurança',
-  'typescript', 'javascript', 'python', 'php', 'ruby', 'csharp', 'c++', 'c', 'dart', 'rust', 'scala', 'elixir',
-  'backstage', 'mysql', 'mongodb', 'mongo', 'postgres', 'postgresql', 'android', 'sql'
-];
-
-
-// Mapeamento de palavras-chave para imagens temáticas
-const getImageForTitle = (title: string): string => {
-  const titleLower = title.toLowerCase();
-  
-  const imageMap: { [key: string]: string } = {
-    // AWS e Serviços
-    'aws': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
-    'sns': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
-    'sqs': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
-    's3': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
-    'lambda': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000',
-    
-    // Arquitetura e Design
-    'architecture': 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1000',
-    'arquitetura': 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1000',
-    'clean': 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1000',
-    'design': 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1000',
-    'adr': 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1000',
-    
-    // Java e Performance
-    'java': 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000',
-    'spring': 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000',
-    'jvm': 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000',
-    'performance': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000',
-    
-    // Mensageria
-    'rabbitmq': 'https://images.unsplash.com/photo-1603695762547-fba8b88ac8ad?q=80&w=1000',
-    'kafka': 'https://images.unsplash.com/photo-1603695762547-fba8b88ac8ad?q=80&w=1000',
-    'message': 'https://images.unsplash.com/photo-1603695762547-fba8b88ac8ad?q=80&w=1000',
-    'mensageria': 'https://images.unsplash.com/photo-1603695762547-fba8b88ac8ad?q=80&w=1000',
-    
-    // Go
-    'go': 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000',
-    'golang': 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000',
-    
-    // Cloud e Infraestrutura
-    'cloud': 'https://images.unsplash.com/photo-1603695762547-fba8b88ac8ad?q=80&w=1000',
-    'docker': 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=1000',
-    'kubernetes': 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=1000',
-    
-    // Testes e Qualidade
-    'test': 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000',
-    'teste': 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000',
-    'quality': 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000',
-    'qualidade': 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000',
-    
-    // Desenvolvimento e Código
-    'code': 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000',
-    'código': 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000',
-    'desenvolvimento': 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000',
-    
-    // APIs e Integração
-    'api': 'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=1000',
-    'rest': 'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=1000',
-    'graphql': 'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=1000',
-    
-    // Segurança
-    'security': 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=1000',
-    'segurança': 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=1000',
-    
-    // Imagem padrão para outros casos
-    'default': 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000'
-  };
-
-  // Procura por palavras-chave no título
-  for (const [keyword, imageUrl] of Object.entries(imageMap)) {
-    if (titleLower.includes(keyword)) {
-      return imageUrl;
-    }
-  }
-
-  // Retorna a imagem padrão se nenhuma palavra-chave for encontrada
-  return imageMap.default;
-};
-
-const extractTagsFromText = (text: string): string[] => {
-  const words = text.toLowerCase().match(/\b\w+\b/g) || [];
-  const wordSet = new Set(words);
-  return technologyKeywords.filter(keyword => wordSet.has(keyword));
-};
+import { editorialArticles } from '@/data/editorialArticles';
 
 export default function Blog() {
-  const [gists, setGists] = useState<Gist[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const filteredArticles = useMemo(() => {
+    const term = searchTerm.trim().toLocaleLowerCase('pt-BR');
+    if (!term) return editorialArticles;
 
-  const fetchGists = async (pageNumber: number): Promise<{ gists: Gist[], hasMore: boolean }> => {
-    try {
-      const response = await fetch(`https://api.github.com/users/gbzarelli/gists?page=${pageNumber}&per_page=30`);
-      if (!response.ok) {
-        throw new Error('Falha ao carregar os gists');
-      }
-
-      const data = await response.json();
-      
-      // Filtra e processa os gists
-      const helpdevGists = data
-        .filter((gist: Gist) => gist.description?.includes('#helpdev-blog'))
-        .map((gist: Gist) => {
-          const rawTitle = gist.description?.replace('#helpdev-blog', '').trim() || 'Sem título';
-          const firstFile = Object.values(gist.files)[0];
-          const language = firstFile?.language || 'default';
-          const fileName = firstFile?.filename.split('.')[0].replace(/-/g, ' ');
-          const description = `${fileName} - ${language}`;
-          const tags = extractTagsFromText(gist.description);
-          
-          return {
-            ...gist,
-            cleanTitle: rawTitle,
-            cleanDescription: description,
-            imageUrl: getImageForTitle(rawTitle),
-            tags: tags
-          };
-        });
-
-      // Se a página retornou menos que 30 gists, é a última página
-      const hasMore = data.length === 30;
-
-      return { gists: helpdevGists, hasMore };
-    } catch (err) {
-      throw new Error(err instanceof Error ? err.message : 'Erro ao carregar os gists');
-    }
-  };
-
-  const loadAllGists = useCallback(async () => {
-    try {
-      let currentPage = 1;
-      let hasMore = true;
-  
-      while (hasMore) {
-        const { gists: pageGists, hasMore: hasMoreGists } = await fetchGists(currentPage);
-  
-        // Atualiza os gists incrementalmente
-        setGists(prev => [...prev, ...pageGists]);
-  
-        hasMore = hasMoreGists;
-        currentPage++;
-      }
-  
-      setLoading(false);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Erro ao carregar os gists');
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadAllGists();
-  }, [loadAllGists]);
-
-  const filteredGists = useMemo(() => {
-    if (!searchTerm) return gists;
-    const term = searchTerm.toLowerCase();
-    return gists.filter(
-      gist => 
-        gist.cleanTitle.toLowerCase().includes(term) ||
-        gist.cleanDescription.toLowerCase().includes(term)
+    return editorialArticles.filter((article) =>
+      `${article.title} ${article.description} ${article.topic}`
+        .toLocaleLowerCase('pt-BR')
+        .includes(term),
     );
-  }, [searchTerm, gists]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-100">
-        <Navbar />
-        <main className="max-w-7xl mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Blog/Gists</h1>
-          <div className="flex items-center justify-center min-h-[400px]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-          </div>
-        </main>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-100">
-        <Navbar />
-        <main className="max-w-7xl mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Blog/Gists</h1>
-          <div className="flex flex-col items-center justify-center min-h-[400px]">
-            <p className="text-red-500 text-lg">{error}</p>
-            <button 
-              onClick={() => window.location.reload()} 
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-            >
-              Tentar novamente
-            </button>
-          </div>
-        </main>
-      </div>
-    );
-  }
+  }, [searchTerm]);
 
   return (
     <main className="min-h-screen bg-gray-100">
       <Navbar />
-      <div className="max-w-6xl mx-auto px-4 py-6">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">Blog/Gists</h1>
-          <p className="text-sm text-gray-600 mt-1">
-            Snippets de código e soluções práticas
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+        <header className="mb-8 max-w-3xl">
+          <h1 className="text-3xl font-bold text-gray-900">Notas técnicas</h1>
+          <p className="mt-3 text-base leading-7 text-gray-700">
+            Análises práticas de código, arquitetura e decisões de engenharia baseadas em projetos e exemplos mantidos pela HelpDev.
+            Cada nota apresenta o contexto, os limites da solução e referências para conferir a implementação.
           </p>
+        </header>
+
+        <div className="mb-8 max-w-2xl">
+          <SearchBar onSearch={setSearchTerm} placeholder="Buscar por tema ou tecnologia..." />
         </div>
-        <div className="flex flex-col space-y-6 mb-8">
-          <SearchBar 
-            onSearch={setSearchTerm}
-            placeholder="Buscar gists por título ou descrição..."
-          />
-          {searchTerm && !loading && (
-            <p className="text-sm text-gray-600">
-              Encontrados {filteredGists.length} gists
-            </p>
-          )}
-        </div>
-        {filteredGists.length === 0 ? (
-          <p className="text-center text-gray-500">Nenhum gist encontrado com a tag #helpdev-blog</p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredGists.map((gist) => (
-              <BlogCard
-                key={gist.id}
-                title={gist.cleanTitle}
-                description={gist.cleanDescription}
-                date={new Date(gist.created_at).toLocaleDateString('pt-BR')}
-                link={gist.html_url}
-                imageUrl={gist.imageUrl}
-                tags={gist.tags}
-              />
+
+        {searchTerm && (
+          <p className="mb-5 text-sm text-gray-600" aria-live="polite">
+            {filteredArticles.length} {filteredArticles.length === 1 ? 'nota encontrada' : 'notas encontradas'}
+          </p>
+        )}
+
+        {filteredArticles.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {filteredArticles.map((article) => (
+              <article key={article.slug} className="flex flex-col rounded-xl bg-white p-6 shadow-md">
+                <p className="text-sm font-medium text-blue-700">{article.topic}</p>
+                <h2 className="mt-3 text-xl font-semibold leading-snug text-gray-900">
+                  <Link className="hover:text-blue-700" href={`/blog/${article.slug}`}>
+                    {article.title}
+                  </Link>
+                </h2>
+                <p className="mt-3 flex-1 leading-7 text-gray-700">{article.description}</p>
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-gray-100 pt-4 text-sm">
+                  <span className="text-gray-500">Leitura técnica · HelpDev</span>
+                  <Link className="font-semibold text-blue-700 hover:text-blue-900" href={`/blog/${article.slug}`}>
+                    Ler a análise <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
+        ) : (
+          <p className="rounded-lg bg-white p-6 text-gray-600">Nenhuma nota corresponde a essa busca.</p>
         )}
+
+        <aside className="mt-10 rounded-lg border border-gray-200 bg-white p-5 text-sm leading-6 text-gray-700">
+          <h2 className="font-semibold text-gray-900">Código e snippets</h2>
+          <p className="mt-1">
+            Os Gists públicos reúnem exemplos menores de código. As notas desta página são análises editoriais próprias e apontam para os repositórios usados como fonte.
+          </p>
+          <a
+            className="mt-3 inline-flex font-semibold text-blue-700 hover:text-blue-900"
+            href="https://gist.github.com/gbzarelli"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver Gists no GitHub <span className="ml-1" aria-hidden="true">↗</span>
+          </a>
+        </aside>
       </div>
     </main>
   );
-} 
+}

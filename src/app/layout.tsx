@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import GoogleAnalytics from "./components/GoogleAnalytics";
-import AdSenseBanner from "./components/AdSenseBanner";
 import Script from "next/script";
 import { serviceOfferings } from "@/data/services";
 
@@ -135,7 +134,6 @@ export default function RootLayout({
           }) }}
         />
         {children}
-        <AdSenseBanner />
         <Footer />
       </body>
     </html>

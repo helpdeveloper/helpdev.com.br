@@ -3,15 +3,7 @@
 import { ProjectCard } from '../components/ProjectCard';
 import { Navbar } from '../components/Navbar';
 import { SearchBar } from '../components/SearchBar';
-import { useState, useMemo, useEffect } from 'react';
-
-interface Project {
-  title: string;
-  description: string;
-  imageUrl: string;
-  link: string;
-  languages: string[];
-}
+import { useState, useMemo } from 'react';
 
 const initialProjects = [
   {
@@ -72,47 +64,15 @@ const initialProjects = [
 
 export default function Projects() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const getRepoInfo = async (repoUrl: string) => {
-    try {
-      const repoPath = repoUrl.replace('https://github.com/', '');
-      const response = await fetch(`https://api.github.com/repos/${repoPath}/languages`);
-      const languages = await response.json();
-      return Object.keys(languages);
-    } catch (error) {
-      console.error('Erro ao buscar linguagens:', error);
-      return [];
-    }
-  };
-
-  useEffect(() => {
-    const fetchLanguages = async () => {
-      const projectsWithLanguages = await Promise.all(
-        initialProjects.map(async (project) => {
-          const languages = await getRepoInfo(project.link);
-          return {
-            ...project,
-            languages
-          };
-        })
-      );
-      setProjects(projectsWithLanguages);
-      setLoading(false);
-    };
-
-    fetchLanguages();
-  }, []);
 
   const filteredProjects = useMemo(() => {
     const term = searchTerm.toLowerCase();
-    return projects.filter(
+    return initialProjects.filter(
       project => 
         project.title.toLowerCase().includes(term) ||
         project.description.toLowerCase().includes(term)
     );
-  }, [searchTerm, projects]);
+  }, [searchTerm]);
 
   return (
     <main className="min-h-screen bg-gray-200">
@@ -135,11 +95,7 @@ export default function Projects() {
             </p>
           )}
         </div>
-        {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-          </div>
-        ) : filteredProjects.length > 0 ? (
+        {filteredProjects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project, index) => (
               <ProjectCard
@@ -148,7 +104,7 @@ export default function Projects() {
                 description={project.description}
                 imageUrl={project.imageUrl}
                 link={project.link}
-                languages={project.languages}
+                languages={[]}
               />
             ))}
           </div>
@@ -160,4 +116,4 @@ export default function Projects() {
       </div>
     </main>
   );
-} 
+}

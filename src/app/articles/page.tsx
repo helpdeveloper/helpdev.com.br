@@ -123,7 +123,7 @@ export default function Articles() {
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-800">Artigos</h1>
           <p className="text-sm text-gray-600 mt-1">
-            Compartilhando conhecimento sobre desenvolvimento de software
+            Seleção de publicações técnicas assinadas por Guilherme Biff Zarelli em canais como Medium, PicPay e LuizaLabs. O conteúdo completo e sua autoria permanecem nas páginas de origem.
           </p>
         </div>
         <div className="flex flex-col space-y-6 mb-8">
