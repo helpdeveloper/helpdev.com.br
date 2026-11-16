@@ -3,14 +3,14 @@ import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: 'Artigos',
-  description: 'Artigos e tutoriais sobre desenvolvimento de software, arquitetura, boas práticas e tecnologia. Aprenda com conteúdo técnico de qualidade.',
+  description: 'Seleção de publicações técnicas de Guilherme Biff Zarelli hospedadas no Medium, PicPay e LuizaLabs, com links para as fontes originais.',
   keywords: ['artigos', 'tutoriais', 'desenvolvimento', 'software', 'programação', 'tecnologia', 'arquitetura', 'boas práticas', 'java', 'javascript', 'typescript', 'aprendizado'],
   authors: [{ name: 'Guilherme Biff Zarelli' }],
   alternates: { canonical: '/articles' },
   openGraph: {
     url: '/articles',
     title: 'Artigos | HelpDev',
-    description: 'Artigos e tutoriais sobre desenvolvimento de software, arquitetura, boas práticas e tecnologia. Aprenda com conteúdo técnico de qualidade.',
+    description: 'Publicações técnicas de Guilherme Biff Zarelli em canais externos, com links para as páginas e autoria originais.',
     type: 'website',
     images: [{
       url: 'https://helpdev.com.br/images/logo.png',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Artigos | HelpDev',
-    description: 'Artigos e tutoriais sobre desenvolvimento de software, arquitetura, boas práticas e tecnologia.',
+    description: 'Publicações técnicas de Guilherme Biff Zarelli em canais externos, com links para as páginas e autoria originais.',
     images: ['https://helpdev.com.br/images/logo.png'],
     creator: '@gbzarelli',
     site: '@_helpdev',

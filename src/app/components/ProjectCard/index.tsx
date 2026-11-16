@@ -34,8 +34,8 @@ export const ProjectCard = React.memo(({ title, description, imageUrl, link, lan
           <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
             {title}
           </h3>
-          <div className="flex flex-wrap gap-2 mb-3">
-            {languages && languages.map((lang, index) => (
+          {languages.length > 0 && <div className="mb-3 flex flex-wrap gap-2">
+            {languages.map((lang, index) => (
               <span
                 key={index}
                 className={`px-2 py-1 rounded-full text-xs font-medium ${getLanguageColor(lang)}`}
@@ -43,7 +43,7 @@ export const ProjectCard = React.memo(({ title, description, imageUrl, link, lan
                 {lang}
               </span>
             ))}
-          </div>
+          </div>}
           <p className="text-sm text-gray-600 line-clamp-2">
             {description}
           </p>
