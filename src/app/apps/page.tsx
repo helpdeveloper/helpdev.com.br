@@ -5,14 +5,14 @@ import { portfolioApps } from '@/data/apps';
 
 export const metadata: Metadata = {
   title: 'Aplicativos',
-  description: 'Conheça os aplicativos da Help DEV para organização, mobilidade e esporte, além do próximo lançamento CuidaZ.',
+  description: 'Conheça os aplicativos da Help DEV para organização, mobilidade e esporte. CuidaZ já está disponível na Google Play.',
   keywords: ['aplicativos', 'Google Play', 'Help DEV', 'Minha Obra', 'Velocímetro Alerta', 'CuidaZ'],
   authors: [{ name: 'Guilherme Biff Zarelli' }],
   alternates: { canonical: '/apps' },
   openGraph: {
     url: '/apps',
     title: 'Aplicativos | HelpDev',
-    description: 'Aplicativos da Help DEV para organização, mobilidade e esporte, além do próximo lançamento CuidaZ.',
+    description: 'Aplicativos da Help DEV para organização, mobilidade e esporte. CuidaZ já está disponível na Google Play.',
     type: 'website',
     images: [{
       url: 'https://helpdev.com.br/images/logo.png',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Aplicativos | HelpDev',
-    description: 'Aplicativos da Help DEV para organização, mobilidade e esporte, além do próximo lançamento CuidaZ.',
+    description: 'Aplicativos da Help DEV para organização, mobilidade e esporte. CuidaZ já está disponível na Google Play.',
     images: ['https://helpdev.com.br/images/logo.png'],
     creator: '@gbzarelli',
     site: '@_helpdev',
@@ -39,7 +39,7 @@ export default function AppsPage() {
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Aplicativos</h1>
           <p className="mt-2 max-w-2xl text-base leading-7 text-gray-600">
-            Aplicativos da Help DEV para organização, mobilidade e esporte — e o próximo lançamento CuidaZ.
+            Aplicativos da Help DEV para organização, mobilidade e esporte. O CuidaZ já está disponível na Google Play.
           </p>
         </header>
 

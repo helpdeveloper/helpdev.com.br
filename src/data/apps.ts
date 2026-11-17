@@ -30,12 +30,13 @@ export const portfolioApps: PortfolioApp[] = [
     storeUrl: 'https://play.google.com/store/apps/details?id=br.com.helpdev.minhareforma',
   },
   {
-    kind: 'coming-soon',
+    kind: 'published',
     id: 'cuidaz',
     name: 'CuidaZ',
-    description: 'Organize pacientes, agenda, atendimentos, evoluções clínicas e recebimentos.',
-    logo: '/images/apps/cuidaz-logo.png',
-    statusLabel: 'Em Breve',
+    description: 'Organize agenda, pacientes e atendimentos em um só lugar.',
+    promotionalImage: '/images/apps/cuidaz-promotional.png',
+    icon: '/images/apps/cuidaz-icon.png',
+    storeUrl: 'https://play.google.com/store/apps/details?id=br.com.helpdev.cuidaz',
   },
   {
     kind: 'published',
